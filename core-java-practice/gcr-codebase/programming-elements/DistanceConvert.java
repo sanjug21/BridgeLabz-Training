@@ -7,5 +7,6 @@ public class DistanceConvert {
         double yards=feets/3;
         double miles=feets/5280;
         System.out.println("The distance in feets is "+feets+" while in yards is "+yards+" and in miles is "+miles);
+        sc.close();
     }
 }

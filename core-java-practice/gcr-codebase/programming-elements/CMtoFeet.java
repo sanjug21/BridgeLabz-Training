@@ -8,5 +8,6 @@ public class CMtoFeet {
       double feet=totalInches/12;
       double inch=totalInches%12;
       System.out.println("Your Height in cm is "+cm+" while in feet is "+feet+" and inches is "+inch);
+      sc.close();
     }
 }
