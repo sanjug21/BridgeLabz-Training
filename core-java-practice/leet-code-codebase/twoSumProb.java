@@ -16,7 +16,7 @@ public class twoSumProb {
                 }
             }
         }
-
+        sc.close();
     }
     
 }

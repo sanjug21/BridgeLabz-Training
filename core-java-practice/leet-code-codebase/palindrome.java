@@ -18,5 +18,6 @@ class palindrome{
             j--;
         }
         System.out.println("Is the string a palindrome? " + isPalindrome);
+        sc.close();
      }
 }
