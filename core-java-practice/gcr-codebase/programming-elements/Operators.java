@@ -10,5 +10,6 @@ public class Operators {
         System.out.println(a * b + c);
         System.out.println(c + a / b);
         System.out.println(a % b + c);
+        sc.close();
     }
 }

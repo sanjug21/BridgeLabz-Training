@@ -8,5 +8,6 @@ public class QuotientRemainder {
                 int q=dividend/divisor;
                 int rem=dividend%divisor;
                 System.out.println("The Quotient is " + q + " and Reminder is " + rem + " of two number " + dividend + " and " + divisor);
+                sc.close();
         }
 }
