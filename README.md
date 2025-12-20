@@ -1,18 +1,21 @@
-# BridgeLabz-Training
+# BridgeLabz-Training Progress
 
 
-**16th Dec 2025**
+# Week 1: Getting started Java and its fundamentals
 
-- Started with the basic setup of folders and github.
+- *16th Dec 2025 (Tuesday)*: Started with the basic setup of folders and github.
 
-**17th Dec 2025**
+- *17th Dec 2025 (Wednesday)*: Studies the basic fundamentals of java and solved some basic problems.
 
-- Added and solved problem to leetcode codebase.
-- Added and solved problem in gcr codebase.
+- *18th Dec 2025 (Thursday)*: Solved problems related to conditionals, loops and graph problems on leetcode.
 
-**18th Dec 2025**
+- *19th Dec 2025 (Friday)*: Studied about history and concepts related to java with some more control flow problems.
 
-- Solved over 16 question on basic programming from the google classroom.
-- Solved 2 Graph problem RottenOranges and Cycle in Undirected Graph.
+- *20th Dec 2025 (Saturday): Studied about arrays in java and solved level 1 and 2 problems along with some leetcode problems.
+
+
+
+
+
 
 
