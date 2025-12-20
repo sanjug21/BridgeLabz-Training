@@ -1,7 +1,7 @@
 # BridgeLabz-Training Progress
 
 
-# Week 1: Getting started Java and its fundamentals
+# Week 1: Getting started with Java and its fundamentals
 
 - *16th Dec 2025 (Tuesday)*: Started with the basic setup of folders and github.
 
