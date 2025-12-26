@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class QuotientRemainder {
+public class QuotientRemainderBasic {
+        
         public static void main(String[] args) {
                 Scanner sc=new Scanner(System.in);
                 int dividend=sc.nextInt();
