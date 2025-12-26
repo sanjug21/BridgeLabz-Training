@@ -7,6 +7,7 @@ public class CharFrequencyAscii {
         System.out.println("Enter a string:");
         String text=sc.next();
 
+        // gets the frequency of each character in the string
         String[][] frequencyData=getCharacterFrequency(text);
         
         System.out.println("Character | Frequency");
@@ -22,7 +23,7 @@ public class CharFrequencyAscii {
             frequency[text.charAt(i)]++;
         }
 
-        // Here count the frequency of characters
+        // Here count the frequency of each character
         int distinctCount=0;
         for (int i=0;i<256;i++) {
             if (frequency[i]>0) distinctCount++;
