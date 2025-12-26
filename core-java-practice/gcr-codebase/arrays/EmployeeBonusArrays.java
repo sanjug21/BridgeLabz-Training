@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class EmployeeBonus {
+public class EmployeeBonusArrays {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         // Arrays to store salary, years of service, new salary and bonus for 10 employees

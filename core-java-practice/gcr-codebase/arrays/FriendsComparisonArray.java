@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class FriendsComparison {
+public class FriendsComparisonArray {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         int[] age=new int[3];
