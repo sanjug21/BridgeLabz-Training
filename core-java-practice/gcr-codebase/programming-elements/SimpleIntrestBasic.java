@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SimpleIntrest {
+public class SimpleIntrestBasic {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         int principle=sc.nextInt();
