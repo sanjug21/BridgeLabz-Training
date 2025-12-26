@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class NumberAnalysis {
+public class NumberAnalysisArray {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         int[] numbers=new int[5];
