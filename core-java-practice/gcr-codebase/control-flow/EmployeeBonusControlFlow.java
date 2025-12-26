@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class EmployeeBonus {
+public class EmployeeBonusControlFlow {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         double salary=sc.nextDouble();
