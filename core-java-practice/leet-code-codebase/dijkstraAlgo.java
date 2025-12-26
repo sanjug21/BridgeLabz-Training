@@ -28,19 +28,18 @@ public class dijkstraAlgo {
         
         PriorityQueue<int[]>q=new PriorityQueue<>((a,b)->(a[1]-b[1]));
         q.add(new int []{src,0});
-        
-        boolean vis[]=new boolean[V];
+        ans[src]=0;
         while(!q.isEmpty()){
             int node[]=q.poll();
             int curr=node[0],dist=node[1];
-            ans[curr]=Math.min(ans[curr],dist);
-            if(vis[curr])continue;
-            vis[curr]=true;
+            
+            if(dist>ans[curr])continue;
             Map<Integer,Integer> nei=graph.getOrDefault(curr,new HashMap<>());
             for(int i:nei.keySet()){
                 int w=nei.get(i);
-                if(!vis[i]){
-                    q.add(new int[]{i,dist+w});
+                if(dist+w<ans[i]){
+                    ans[i]=dist+w;
+                    q.add(new int[]{i,ans[i]});
                 }
             }
         }
