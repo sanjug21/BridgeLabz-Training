@@ -23,6 +23,10 @@
 
 - *26th Dec 2025 (Friday)*: Solved the extra questions given on strings and built-in methods and three graph problems on leetcode.
 
+# Week 3: Getting started with OOPs in Java
+
+- *29th Dec 2025 (Monday)*: Solved some scenario based problems and setup of folder structure for OOPs.
+
 
 
 
