@@ -4,6 +4,7 @@ public class EmployeeWage {
    
  
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         // all these values are provided in the problem statement
         int wagePerHour=20;
         int fullDayHour=8;
@@ -27,16 +28,23 @@ public class EmployeeWage {
 
         // UC-2: Calculate Daily Employee Wage  
         System.out.println("UC-2: Calculate Daily Employee Wage");
-        int employeeWage=calculateDailyWage(fullDayHour,wagePerHour);
-        System.out.println("Daily Employee Wage is: "+employeeWage);
-
+        int empType=typeOfEmployee();
+        int empDailyWage=0;
+        if (empType==1) {
+            empDailyWage=calculateDailyWage(fullDayHour, wagePerHour);
+        } else if(empType==2){
+            empDailyWage=calculateDailyWage(partTimeHour, wagePerHour);
+        } else  {
+            empDailyWage=0;
+        }
+        String empTypeName=(empType==1)?"Full Time":(empType==2)?"Part Time":"Absent";
+        System.out.println("Daily Employee Wage for "+empTypeName+" is: "+empDailyWage);
 
 
         // UC-3: Part Time Employee Wage
         System.out.println("UC-3: Part Time Employee Wage");
-        Scanner sc=new Scanner(System.in);
         System.out.println("Enter type of Employee (1.Full Time 2.Part Time): ");
-        int empType=sc.nextInt();
+        empType=sc.nextInt();
         if (empType==1) {
             System.out.println("Full Time Employee Daily Wage is: "+calculateDailyWage(fullDayHour, wagePerHour));
         } else if (empType==2) {
