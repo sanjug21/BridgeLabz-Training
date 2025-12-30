@@ -1,0 +1,12 @@
+/bin/
+/.project
+/.settings/
+/.classpath
+/.factorypath
+/.idea/
+/.vscode/
+/out/
+/target/
+/*.iml
+.DS_Store
+Thumbs.db
