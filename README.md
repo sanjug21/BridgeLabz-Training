@@ -27,6 +27,16 @@
 
 - *29th Dec 2025 (Monday)*: Solved some scenario based problems and setup of folder structure for OOPs.
 
+- *30th Dec 2025 (Tuesday)*: Solved problems based on objects and class along with some leetcode problems.
+
+- *31st Dec 2025 (Wednesday)*: Solved the problems based on constructors, instance vs class variables and access modifiers along with some arrays questions on leetcode.
+
+- *1st Jan 2026 (Thursday)*: Solved the problems based on this, final, static keywords along with two scenario based problems and more arrays questions on leetcode.
+
+
+
+
+
 
 
 
