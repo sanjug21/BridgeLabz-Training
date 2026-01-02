@@ -33,6 +33,10 @@
 
 - *1st Jan 2026 (Thursday)*: Solved the problems based on this, final, static keywords along with two scenario based problems and more arrays questions on leetcode.
 
+- *2nd Jan 2026 (Friday)*: Created obeject, class and sequence diagram along with two scenario based problems.
+
+
+
 
 
 
