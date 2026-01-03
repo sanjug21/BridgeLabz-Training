@@ -35,6 +35,8 @@
 
 - *2nd Jan 2026 (Friday)*: Created obeject, class and sequence diagram along with two scenario based problems.
 
+- *3rd Jan 2026 (Saturday)*: Solved 2 graph problems related to coloring and path and scenario based question using methods and some problems based on single, multiple, multilevel and hierarchical inheritance.
+
 
 
 
