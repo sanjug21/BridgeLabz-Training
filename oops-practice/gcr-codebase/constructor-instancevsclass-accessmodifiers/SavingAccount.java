@@ -1,8 +1,8 @@
- class BankAccount{
+ class BankAccounts{
     public long accountNumber;
     protected String accountHolder;
     private double balance;
-    public BankAccount(long accountNumber, String accountHolder, double balance) {
+    public BankAccounts(long accountNumber, String accountHolder, double balance) {
         this.accountNumber = accountNumber;
         this.accountHolder = accountHolder;
         this.balance = balance;
@@ -16,7 +16,8 @@
         this.balance = balance;
     }
 }
-public class SavingAccount extends BankAccount{
+
+public class SavingAccount extends BankAccounts{
     // Constructor for SavingAccount with super keyword
     public SavingAccount(long accountNumber, String accountHolder, double balance) {
         super(accountNumber, accountHolder, balance);
