@@ -37,6 +37,8 @@
 
 - *3rd Jan 2026 (Saturday)*: Solved 2 graph problems related to coloring and path and scenario based question using methods and some problems based on single, multiple, multilevel and hierarchical inheritance.
 
+# Week 4: Four Pillers of OOPs i.e. Abstraction, Encapsulation, Inheritance and Polymorphism
+
 - *6th Jan 2026 (Monday)*: Solved 3 scenaio based problem (Score Analyzer, Menu App, Invoice Generator) and Sliding Window Maximum and Longest string without repeating characters on leetcode along with the assignment questions. 
 
 
