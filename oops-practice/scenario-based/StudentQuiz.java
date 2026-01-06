@@ -72,7 +72,20 @@ public class StudentQuiz {
                 System.out.println("("+option.values()[j]+") "+quiz.options[i][j]);
             }
             System.out.println("Choose option:");
-            quiz.studentAnswers[i]= sc.next();            
+            try{
+                String answer= sc.next();
+                if(answer.equalsIgnoreCase("A") || answer.equalsIgnoreCase("B") || answer.equalsIgnoreCase("C") || answer.equalsIgnoreCase("D")){
+                    quiz.studentAnswers[i]=answer;
+                }
+                else{
+                    throw new Exception("Invalid option");
+                }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+                i--;
+                sc.next();
+            }
+                       
         }
         int score=quiz.calculateScore();
         System.out.println("You scored: "+score);
