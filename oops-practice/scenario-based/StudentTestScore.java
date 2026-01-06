@@ -70,13 +70,20 @@ public class StudentTestScore {
             System.out.println("Enter scores for Student "+(i+1));
             for(int j=0;j<5;j++){
                 System.out.println("Enter score for "+Subject.values()[j]+": ");
-                if(sc.hasNextDouble() && (studentTestScore.scores[i][j]<0 || studentTestScore.scores[i][j]>100)){
-                    System.out.println("Invalid score. Please enter a score between 0 and 100.");
-                    j--;
+                try{
+                    studentTestScore.scores[i][j]=sc.nextDouble();
+                    if(studentTestScore.scores[i][j]<0)throw new Exception("Score can not be less than 0");
+                    if(studentTestScore.scores[i][j]>100)throw new Exception("Score can not be greater than 100");
+                }catch(InputMismatchException e){
+                    System.out.println("Invalid input. Please enter a valid number.");
+                    i--;
                     sc.next();
-                    continue;
+
+                } 
+                catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    i--;
                 }
-                studentTestScore.scores[i][j]=sc.nextDouble();
             }
         }
         studentTestScore.analyzeScores();
