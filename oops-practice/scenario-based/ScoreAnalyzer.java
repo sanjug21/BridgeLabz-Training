@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ScoreAnalyzer {
@@ -14,18 +15,19 @@ public class ScoreAnalyzer {
         for (int i = 0; i < n; i++) {
             System.out.println("Enter score for student " + (i + 1) + ": ");
             // handels invalid input 
-            if (sc.hasNextDouble()) {
-                double tmp= sc.nextDouble();
-                // loops till we get a score b/w 0 and 100
-                while(tmp<0 || tmp>100){
-                    System.out.println("Invalid score. Please enter a score between 0 and 100.");
-                    tmp=sc.nextDouble();
-                }
-                scores[i] = tmp;
-            } else {
-                System.out.println("Invalid score type. Please enter a score between 0 and 100.");
+            try {
+                scores[i] = sc.nextDouble();
+                if(scores[i]<0)throw new Exception("Score can not be less than 0");
+                if(scores[i]>100)throw new Exception("Score can not be greater than 100");
+            }catch(InputMismatchException e){
+                System.out.println("Invalid input. Please enter a valid number.");
                 i--;
                 sc.next();
+
+            } 
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+                i--;
             }
         }
         sc.close();
