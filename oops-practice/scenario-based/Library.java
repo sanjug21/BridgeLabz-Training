@@ -17,7 +17,7 @@ public class Library {
         }
     }
 
-    void searchBook(String keyword) {
+    void searchBook(String keyword)  {
         boolean found = false;
         System.out.println("Search Results for '" + keyword + "':");
 
@@ -30,7 +30,7 @@ public class Library {
             }
         }
         if (!found) {
-            System.out.println("No books found.");
+            System.out.println("No books found matching the keyword.");
         }
     }
 
@@ -38,11 +38,17 @@ public class Library {
         int index = bookId - 1;
         if (index >= 0 && index < NoOfBooks) {
             if (isCheckout) {
-                if (books[index][2].equalsIgnoreCase("Available")) {
+                try{
+                    if (books[index][2].equalsIgnoreCase("Available")) {
                     books[index][2] = "Checked Out";
                     System.out.println("Book checked out successfully.");
                 } else {
-                    System.out.println("Book is already checked out.");
+                    throw new Exception("Book is already checked out");
+                    
+                }
+                    
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
             } else {
                 if (books[index][2].equalsIgnoreCase("Checked Out")) {
@@ -57,7 +63,7 @@ public class Library {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)   {
         Scanner sc = new Scanner(System.in);
         System.out.println("Library Management System");
         System.out.println("Enter number of books to store: ");
