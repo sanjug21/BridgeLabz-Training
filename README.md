@@ -43,7 +43,9 @@
 
 - *6th Jan (Tuesday)*: Solved scenario based problem having methods and exceptions and maximum window substring and longest repeating character replacement on leetcode.
 
-- *7th Jan (Wednesday)*: 
+- *7th Jan (Wednesday)*: Solved two scenario based problem i.e. OnlineBanking and CabBooking based on abstraction, encapsulation, inheritance and polymorphism along with 2 leetcode problems.
+
+- *8th Jan (Thursday)*: 
 
 
 
