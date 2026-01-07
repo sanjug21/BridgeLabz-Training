@@ -41,6 +41,9 @@
 
 - *5th Jan 2026 (Monday)*: Solved 3 scenaio based problem (Score Analyzer, Menu App, Invoice Generator) and Sliding Window Maximum and Longest string without repeating characters on leetcode along with the assignment questions. 
 
+- *6th Jan (Tuesday)*: Solved scenario based problem having methods and exceptions and maximum window substring and longest repeating character replacement on leetcode.
+
+- *7th Jan (Wednesday)*: 
 
 
 
