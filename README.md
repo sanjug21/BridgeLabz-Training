@@ -45,7 +45,9 @@
 
 - *7th Jan (Wednesday)*: Solved two scenario based problem i.e. OnlineBanking and CabBooking based on abstraction, encapsulation, inheritance and polymorphism along with 2 leetcode problems.
 
-- *8th Jan (Thursday)*: 
+- *8th Jan (Thursday)*: Solved problems based on singly, doubly and circular linked list and two question on leetcode realted to bitwise operations.
+
+
 
 
 
