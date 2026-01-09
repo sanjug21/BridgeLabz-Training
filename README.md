@@ -47,6 +47,12 @@
 
 - *8th Jan (Thursday)*: Solved problems based on singly, doubly and circular linked list and two question on leetcode realted to bitwise operations.
 
+- *9th Jan (Friday)*: Solved problems based on singly, doubly and circular linked list and midOfList and reverseList questions on leetcode and 3 scenario based problems i.e. HotelManagement, VehicleRent and FlightBooking.
+
+# Week 5: Data Structures in Java
+
+- *12th Jan (Monday)*: 
+
 
 
 
