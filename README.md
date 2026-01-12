@@ -51,7 +51,9 @@
 
 # Week 5: Data Structures in Java
 
-- *12th Jan (Monday)*: 
+- *12th Jan (Monday)*: Solved scenario based problem related to oops concepts problems include BankingSystem, InventoryManagement, ECommerce, StudentCourses, CabBooking and HospitalManagement.
+
+- *13th Jan (Tuesday)*: 
 
 
 
