@@ -53,7 +53,9 @@
 
 - *12th Jan (Monday)*: Solved scenario based problem related to oops concepts problems include BankingSystem, InventoryManagement, ECommerce, StudentCourses, CabBooking and HospitalManagement.
 
-- *13th Jan (Tuesday)*: 
+- *13th Jan (Tuesday)*: Solved problems based on oops having various scenarios problems include SmartShelf, EventManager, TrafficManager etc and demonstrated the git commands especially the merge conflict by creating a GitDemo repo.
+
+- *14th Jan (Wednesday)*:
 
 
 
