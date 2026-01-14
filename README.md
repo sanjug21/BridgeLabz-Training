@@ -41,21 +41,23 @@
 
 - *5th Jan 2026 (Monday)*: Solved 3 scenaio based problem (Score Analyzer, Menu App, Invoice Generator) and Sliding Window Maximum and Longest string without repeating characters on leetcode along with the assignment questions. 
 
-- *6th Jan (Tuesday)*: Solved scenario based problem having methods and exceptions and maximum window substring and longest repeating character replacement on leetcode.
+- *6th Jan 2026 (Tuesday)*: Solved scenario based problem having methods and exceptions and maximum window substring and longest repeating character replacement on leetcode.
 
-- *7th Jan (Wednesday)*: Solved two scenario based problem i.e. OnlineBanking and CabBooking based on abstraction, encapsulation, inheritance and polymorphism along with 2 leetcode problems.
+- *7th Jan 2026 (Wednesday)*: Solved two scenario based problem i.e. OnlineBanking and CabBooking based on abstraction, encapsulation, inheritance and polymorphism along with 2 leetcode problems.
 
-- *8th Jan (Thursday)*: Solved problems based on singly, doubly and circular linked list and two question on leetcode realted to bitwise operations.
+- *8th Jan 2026 (Thursday)*: Solved problems based on singly, doubly and circular linked list and two question on leetcode realted to bitwise operations.
 
-- *9th Jan (Friday)*: Solved problems based on singly, doubly and circular linked list and midOfList and reverseList questions on leetcode and 3 scenario based problems i.e. HotelManagement, VehicleRent and FlightBooking.
+- *9th Jan 2026 (Friday)*: Solved problems based on singly, doubly and circular linked list and midOfList and reverseList questions on leetcode and 3 scenario based problems i.e. HotelManagement, VehicleRent and FlightBooking.
 
 # Week 5: Data Structures in Java
 
-- *12th Jan (Monday)*: Solved scenario based problem related to oops concepts problems include BankingSystem, InventoryManagement, ECommerce, StudentCourses, CabBooking and HospitalManagement.
+- *12th Jan 2026 (Monday)*: Solved scenario based problem related to oops concepts problems include BankingSystem, InventoryManagement, ECommerce, StudentCourses, CabBooking and HospitalManagement.
 
-- *13th Jan (Tuesday)*: Solved problems based on oops having various scenarios problems include SmartShelf, EventManager, TrafficManager etc and demonstrated the git commands especially the merge conflict by creating a GitDemo repo.
+- *13th Jan 2026 (Tuesday)*: Solved problems based on oops having various scenarios problems include SmartShelf, EventManager, TrafficManager etc and demonstrated the git commands especially the merge conflict by creating a GitDemo repo.
 
-- *14th Jan (Wednesday)*:
+- *14th Jan 2026 (Wednesday)*: Solved DSA problems related to Stack, Queue, HashMap and HashSet. Problems include twoSum, SlidingWindowMaximum, stockSpan, circularTour and similar problems on leetcode.
+
+- *15th Jan 2026 (Thursday)*: 
 
 
 
