@@ -57,8 +57,9 @@
 
 - *14th Jan 2026 (Wednesday)*: Solved DSA problems related to Stack, Queue, HashMap and HashSet. Problems include twoSum, SlidingWindowMaximum, stockSpan, circularTour and similar problems on leetcode.
 
-- *15th Jan 2026 (Thursday)*: 
+- *15th Jan 2026 (Thursday)*: Solved and studied about various sorting algorithms along with 2 problems on leetcode i.e. LinkedListCycle and MergeLinkedList and solved 3 use cases of AddressBookSystem.
 
+- *16th Jan 2026 (Friday)*: 
 
 
 
