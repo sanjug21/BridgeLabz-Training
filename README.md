@@ -1,5 +1,60 @@
 # BridgeLabz-Training Progress
 
+# Core Java Scenario Based Problems
+
+1. [BMI Calculator](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/BMIFitnessTracker.java)
+2. [Bus Tracker](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/BusTracker.java)
+3. [Coffee Counter](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/CoffeeCounter.java)
+4. [Delhi Metro](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/DelhiMetro.java)
+5. [Digital Watch](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/DigitalWatch.java)
+6. [Election Booth](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/ElectionBooth.java)
+7. [Employee Wage](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/EmployeeWage.java)
+8. [Line Comparison](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/LineComparison.java)
+9. [Lucky Draw](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/LuckyDraw.java)
+10. [Movie Ticket Booking](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/MovieTicketBooking.java)
+11. [Rohans Library](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/RohansLibrary.java)
+12. [Sandeep Fitness Challenge](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/SandeepFitnessChallenge.java)
+13. [Snake And Ladder](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/SnakeAndLadder.java)
+
+
+
+
+# OOPS Scenario Based Problems
+
+1. [Cab Booking](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/cab_booking_system)
+2. [Digital Wallet System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/digital_wallet_system)
+3. [E-Commerce Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/e_commerce_management_system)
+4. [Event Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/event_manager)
+5. [Hospital Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/hospital_management_system)
+6. [Hotel Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/hotel_management_system)
+7. [Inventory Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/inventory_management_system)
+8. [Library Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/library_management_system)
+9. [Online Banking System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/online_banking_system)
+10. [Online Examination System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/online_examination_system)
+11. [Online Voting System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/online_voting_system)
+12. [Smart Shelf](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/smart_shelf)
+13. [Student Courses Registration System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/student_course_registration_system)
+14. [Traffic Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/traffic_manager)
+15. [Temperature Analyzer](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/TemperatureAnalyzer.java)
+16. [Student Test Score](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/StudentTestScore.java)
+17. [Student Quiz](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/StudentQuiz.java)
+18. [Sentence Formatter](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/SentenceFormatter.java)
+19. [Score Analyzer](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/ScoreAnalyzer.java)
+20. [Menu App](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/MenuApp.java)
+21. [Mathematical Operations](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/MathematicalOperations.java)
+22. [Library](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/Library.java)
+23. [Invoice Generator](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/InvoiceGenerator.java)
+24. [Contact Organizer](https://github.com/sanjug21/BridgeLabz-Training/blob/oops-practice/oops-practice/scenario-based/ContactOrganizer.java)
+25. [Address Book Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/gcr-codebase/address_book)
+26. [Flight Booking System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/FlightBookingSystem.java)
+27. [Hospital Management System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/HospitalManagementSystem.java)
+28. [Vehicle Rental System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/VehicleRentalSystem.java)
+
+# DSA Scenario Based Problems
+
+
+
+
 
 # Week 1: Getting started with Java and its fundamentals
 
@@ -57,9 +112,9 @@
 
 - *14th Jan 2026 (Wednesday)*: Solved DSA problems related to Stack, Queue, HashMap and HashSet. Problems include twoSum, SlidingWindowMaximum, stockSpan, circularTour and similar problems on leetcode.
 
-- *15th Jan 2026 (Thursday)*: Solved and studied about various sorting algorithms along with 2 problems on leetcode i.e. LinkedListCycle and MergeLinkedList and solved 3 use cases of AddressBookSystem.
+- *15th Jan 2026 (Thursday)*: Solved and studied about various sorting algorithms along with 2 problems on leetcode i.e. LinkedListCycle and MergeLinkedList.
 
-- *16th Jan 2026 (Friday)*: 
+- *16th Jan 2026 (Friday)*: Solved and studied about various input methods from console and file and problems related to linear search and binary search along with UC1 and UC 2 of Address Book System.
 
 
 
