@@ -20,6 +20,8 @@ public class AddressBookMain {
             System.out.println("4. Search Person by State");
             System.out.println("5. View Persons by City");
             System.out.println("6. View Persons by State");
+            System.out.println("7. Count Persons by City");
+            System.out.println("8. Count Persons by State");
             System.out.println("9. Exit");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
@@ -32,23 +34,40 @@ public class AddressBookMain {
                     handelAddressBookOperations();
                     break;
                 case 3:
+                    // UC 8: Ability to get contant in a particular city
                     System.out.println("Enter City: ");
                     String city=sc.next();
-                    displayContacts(addressBookService.getContactsByCity(city));
+                    displayContacts(city,addressBookService.getContactsByCity(city));
                     break;
                 case 4:
+                    // UC 8: Ability to get contant in a particular state
                     System.out.println("Enter State: ");
                     String state=sc.next();
-                    displayContacts(addressBookService.getContactsByState(state));
+                    displayContacts(state,addressBookService.getContactsByState(state));
                     break;
                 case 5:
+                    // UC 9: Ability to view contacts by city
                     displayDictionary("City",addressBookService.viewContactsByCity());
                     break;
                 case 6:
+                    // UC 9: Ability to view contacts by state
                     displayDictionary("State",addressBookService.viewContactsByState());
                     break;
-
-            
+                case 7:
+                    // UC 10: Ability to count contacts by city
+                    System.out.println("Enter City: ");
+                    String city1=sc.next();
+                    System.out.println("Total contacts in "+city1+": "+addressBookService.countContactsByCity(city1));
+                    break;
+                case 8:
+                    // UC 10: Ability to count contacts by state
+                    System.out.println("Enter State: ");
+                    String state1=sc.next();
+                    System.out.println("Total contacts in "+state1+": "+addressBookService.countContactsByState(state1));
+                    break;
+                case 9:
+                    exit=true;
+                    break;            
                 default:
                     System.out.println("Invalid Choice. Please try again.");
                     break;
@@ -208,10 +227,11 @@ public class AddressBookMain {
         }
     }
     
-    private static void displayContacts(List<Contact> contacts) {
+    private static void displayContacts(String stateOrCity,List<Contact> contacts) {
         if (contacts == null || contacts.isEmpty()) {
             System.out.println("No contacts found.");
         } else {
+            System.out.println("Contacts in "+stateOrCity+" :");
             int count = 1;
             for (Contact contact : contacts) {
                 System.out.println(count + ".");
@@ -228,7 +248,7 @@ public class AddressBookMain {
             return;
         }
         map.forEach((key, list) -> {
-            System.out.println(stateOrCity + ": "+key);
+            System.out.println("Contacts in " + key + " "+stateOrCity +":" );
             int count = 1;
             for (Contact contact : list) {
                 System.out.println(count + ".");

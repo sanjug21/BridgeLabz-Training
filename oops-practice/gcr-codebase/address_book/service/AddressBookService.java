@@ -139,6 +139,31 @@ public class AddressBookService {
         }
         return contactsMap;
     }
+    // UC 10: Ability to count contacts by city
+    public long countContactsByCity(String city) {
+        long count = 0;
+        for(Map.Entry<String, List<Contact>> entry:addressBookRepository.getAddressBook().entrySet()){
+            for(Contact contact:entry.getValue()){
+                if(contact.getCity().equalsIgnoreCase(city)){
+                    count++;
+                }
+            }
+        }
+        return count;
+
+    }
+    // UC 10: Ability to count contacts by state
+    public long countContactsByState(String state) {
+        long count = 0;
+        for(Map.Entry<String, List<Contact>> entry:addressBookRepository.getAddressBook().entrySet()){
+            for(Contact contact:entry.getValue()){
+                if(contact.getState().equalsIgnoreCase(state)){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
 
     public Map<String, List<Contact>> getAllContacts(){
         return addressBookRepository.getAddressBook();
