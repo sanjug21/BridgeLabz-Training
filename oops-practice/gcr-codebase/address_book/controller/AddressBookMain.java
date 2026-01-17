@@ -22,7 +22,8 @@ public class AddressBookMain {
             System.out.println("6. View Persons by State");
             System.out.println("7. Count Persons by City");
             System.out.println("8. Count Persons by State");
-            System.out.println("9. Exit");
+            System.out.println("9. Display operation (based on Name/City/State/zip)");
+            System.out.println("10. Exit");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
 
@@ -66,6 +67,11 @@ public class AddressBookMain {
                     System.out.println("Total contacts in "+state1+": "+addressBookService.countContactsByState(state1));
                     break;
                 case 9:
+                    // UC 11: Ability to sort the contacts in each address book by first name
+                    handelSortingContactsOperations();
+                    break;
+
+                case 10:
                     exit=true;
                     break;            
                 default:
@@ -118,6 +124,61 @@ public class AddressBookMain {
             }
 
         }
+    }
+
+    // UC 11: Ability to sort the contacts in each address book by first name
+    public static void handelSortingContactsOperations(){
+        boolean exit=false;
+        while(!exit){
+            System.out.println("---- Sorting Contacts ----");
+            System.out.println("1. Sort by First Name");
+            System.out.println("5. Back to Main Menu");
+            System.out.print("Enter choice: ");
+            int choice=sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    boolean ascendingOrder=chooseOrder();
+                    displaySortedContacts("First Name",ascendingOrder,addressBookService.sortContactsByFirstName(ascendingOrder));
+                    break;
+                case 5:
+                    exit=true;
+                    break;
+                default:
+                    System.out.println("Invalid Choice. Please try again.");
+                    break;
+            }
+
+        }
+    
+
+    }
+    public static boolean chooseOrder(){
+        boolean exit=false;
+        boolean ascendingOrder=false;
+        while(!exit){
+            System.out.println("---- Choose Order ----");
+            System.out.println("1. Ascending Order");
+            System.out.println("2. Descending Order");
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    ascendingOrder=true;
+                    exit=true;
+                    break;
+                case 2:
+                    ascendingOrder=false;
+                    exit=true;
+                    break;
+                default:
+                    System.out.println("Invalid Choice. Please try again.");
+                    break;
+            
+            }
+                    
+        }
+        return ascendingOrder;
     }
 
     // UC 1: Ability to create a new address book contact
@@ -258,4 +319,31 @@ public class AddressBookMain {
             System.out.println();
         });
     }
+
+    private static void displaySortedContacts(String basedOn,boolean ascendingOrder,Map<String, List<Contact>> sortedContacts) {
+        if(sortedContacts.isEmpty()){
+            System.out.println("No contacts found.");
+            return;
+        }
+        String order=ascendingOrder?"Ascending Order":"Decending Order";
+        boolean noContacts=true;
+        for (Map.Entry<String, List<Contact>> entry : sortedContacts.entrySet()) {
+            String key = entry.getKey();
+            List<Contact> list = entry.getValue();
+            if (list.isEmpty()) continue;
+            noContacts=false;
+            System.out.println("Sorted in "+order+ " based on "+basedOn+" in "+key+":");
+            int count = 1;
+            for (Contact contact : list) {
+                System.out.println(count + ".");
+                System.out.println(contact);
+                count++;
+            } 
+        }
+        if(noContacts){
+            System.out.println("No contacts found.");
+        }
+        
+    }
+
 }

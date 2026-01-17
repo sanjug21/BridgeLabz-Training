@@ -165,6 +165,27 @@ public class AddressBookService {
         return count;
     }
 
+    // UC 11: Ability to sort the contacts in each address book by first name
+    public Map<String, List<Contact>> sortContactsByFirstName(boolean ascendingOrder) {
+        Map<String, List<Contact>> sortedContacts = new HashMap<>();
+        for(Map.Entry<String, List<Contact>> entry:addressBookRepository.getAddressBook().entrySet()){
+            sortedContacts.put(entry.getKey(),new ArrayList<>());
+            sortedContacts.get(entry.getKey()).addAll(entry.getValue());
+            Collections.sort(sortedContacts.get(entry.getKey()), new Comparator<Contact>() {
+                @Override
+                public int compare(Contact contact1, Contact contact2) {
+                    if (ascendingOrder) {
+                        return contact1.getFirstName().compareTo(contact2.getFirstName());
+                    } else {
+                        return contact2.getFirstName().compareTo(contact1.getFirstName());
+                    }
+                }
+            });
+        }
+        
+        return sortedContacts;
+    }
+
     public Map<String, List<Contact>> getAllContacts(){
         return addressBookRepository.getAddressBook();
     }
