@@ -10,38 +10,35 @@ public class AddressBookMain {
         System.out.println("==== Welcome to Address Book System ====");
 
         boolean exit=false;
+
+        
         while(!exit){
             System.out.println("---- Main Menu ----");
-            System.out.println("1. Add Contact");
-            System.out.println("2. Edit Contact");
-            System.out.println("3. Delete Contact");
-            System.out.println("4. View Contacts");
-            System.out.println("5. Add new address book");
-            System.out.println("4. Exit");
+            System.out.println("1. Add New Address Book");
+            System.out.println("2. Work with an Address Book (Add/Edit/Delete/display Contacts)");
+            System.out.println("3. Search Person by City");
+            System.out.println("4. Search Person by State");
+            System.out.println("9. Exit");
+            System.out.print("Enter choice: ");
             int choice=sc.nextInt();
 
             switch (choice) {
                 case 1:
-                    String bookName=chooseBookName();
-                    addContactUI(bookName);
-                    break;
-                case 2:
-                    bookName=chooseBookName();
-                    editContactUI(bookName);
-                    break;
-                case 3:
-                    bookName=chooseBookName();
-                    deleteContactUI(bookName);
-                    break;
-
-                case 4:
-                    viewContactsUI();
-                    break;
-                case 5:
                     addNewAddressBookUI();
                     break;
-                case 6:
-
+                case 2:
+                    handelAddressBookOperations();
+                    break;
+                case 3:
+                    System.out.println("Enter City: ");
+                    String city=sc.next();
+                    displayContacts(addressBookService.getContactsByCity(city));
+                    break;
+                case 4:
+                    System.out.println("Enter State: ");
+                    String state=sc.next();
+                    displayContacts(addressBookService.getContactsByState(state));
+                    break;
             
                 default:
                     System.out.println("Invalid Choice. Please try again.");
@@ -51,6 +48,54 @@ public class AddressBookMain {
         }
 
     }
+    // UC 1: Ability to create a new address book contact
+    // UC 2: Add contact to address book
+    // UC 3: Ability to edit contact from address book
+    // UC 4: Ability to delete contact from address book
+    // UC 5: Ability to create multiple contact
+    // UC 6: Ability to create multiple unique address books
+    // UC 7: Ability to ensure unique contacts in a particular address book
+
+    public static void handelAddressBookOperations(){
+        boolean exit=false;
+        while(!exit){
+            System.out.println("---- Address Book Operations ----");
+            System.out.println("1. Add Contact");
+            System.out.println("2. Edit Contact");
+            System.out.println("3. Delete Contact");
+            System.out.println("4. Add New Address Book");
+            System.out.println("5. View all Contacts");
+            System.out.println("6. Exit");
+            System.out.print("Enter choice: ");
+            int choice=sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addContactUI(chooseBookName());
+                    break;
+                case 2:
+                    editContactUI(chooseBookName());
+                    break;
+                case 3:
+                    deleteContactUI(chooseBookName());
+                    break;
+                case 4:
+                    addNewAddressBookUI();
+                    break;
+                case 5:
+                    viewContactsUI();
+                    break;
+                case 6:
+                    exit=true;
+                    break;
+                default:
+                    System.out.println("Invalid Choice. Please try again.");
+                    break;
+            }
+
+        }
+    }
+
     // UC 1: Ability to create a new address book contact
     // UC 2: Add contact to address book
     // UC 5: Ability to create multiple contact
@@ -139,6 +184,8 @@ public class AddressBookMain {
         addressBookService.addNewBook(bookName);
     }
 
+   
+
     public static void viewContactsUI(){
         System.out.println("---- View Contacts UI ----\n");
         Map<String, List<Contact>> addressBook=addressBookService.getAllContacts();
@@ -155,4 +202,20 @@ public class AddressBookMain {
             System.out.println();
         }
     }
+    
+    private static void displayContacts(List<Contact> contacts) {
+        if (contacts == null || contacts.isEmpty()) {
+            System.out.println("No contacts found.");
+        } else {
+            int count = 1;
+            for (Contact contact : contacts) {
+                System.out.println(count + ".");
+                System.out.println(contact);
+                count++;
+            }
+            System.out.println();
+        }
+    }
+
+ 
 }

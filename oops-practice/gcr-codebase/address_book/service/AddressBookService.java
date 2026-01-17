@@ -17,6 +17,7 @@ public class AddressBookService {
 
     public void addContactToBook(String bookName, Contact contact) {
         try {
+            // UC 7: Ability to ensure unique contacts in a particular address book
             if (addressBookRepository.getAddressBook().get(bookName).contains(contact)) {
                 throw new Exception("Contact Already Exists");
             }
@@ -80,6 +81,33 @@ public class AddressBookService {
             System.out.println(e.getMessage());
         }
     }
+
+    // UC 8: Ability to get contant in a particular city
+    public List<Contact> getContactsByCity(String city) {
+        List<Contact> contactsList = new ArrayList<>();
+        for (List<Contact> contactList : addressBookRepository.getAddressBook().values()) {
+            for(Contact contact:contactList){
+                if(contact.getCity().equalsIgnoreCase(city)){
+                    contactsList.add(contact);
+                }
+            }
+        }
+        return contactsList;
+
+    }
+    // UC 8: Ability to get contant in a particular state
+    public List<Contact> getContactsByState(String state) {
+        List<Contact> contactsList = new ArrayList<>();
+        for(List<Contact> contactList:addressBookRepository.getAddressBook().values()){
+            for(Contact contact:contactList){
+                if(contact.getState().equalsIgnoreCase(state)){
+                    contactsList.add(contact);
+                }
+            }
+        }
+        return contactsList;
+    }
+    
 
     public Map<String, List<Contact>> getAllContacts(){
         return addressBookRepository.getAddressBook();
