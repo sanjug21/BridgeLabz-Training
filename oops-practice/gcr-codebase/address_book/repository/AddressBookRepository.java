@@ -19,9 +19,28 @@ public class AddressBookRepository {
 
 
     // UC 1: Ability to create a new address book contact
+    // UC 2: Add contact to address book
     public void addContact(String bookName,Contact contact) {
         addressBook.get(bookName).add(contact);
     }
+
+    // UC 3: Ability to edit contact from address book
+
+    public void editContact(String bookName,Contact contact,Contact updatedContact){
+                contact.setFirstName(updatedContact.getFirstName());
+                contact.setLastName(updatedContact.getLastName());
+                contact.setPhoneNumber(updatedContact.getPhoneNumber());
+                contact.setEmail(updatedContact.getEmail());
+                contact.setAddress(updatedContact.getAddress());
+                contact.setCity(updatedContact.getCity());
+                contact.setState(updatedContact.getState());
+                contact.setZip(updatedContact.getZip());
+
+    }
+
+    // UC 4: Ability to delete contact from address book
+
+
 
 
 

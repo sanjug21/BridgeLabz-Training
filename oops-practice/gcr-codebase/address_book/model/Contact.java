@@ -94,8 +94,8 @@ public class Contact {
             return false;
         }
         Contact contact = (Contact) obj;
-        return (firstName.equals(contact.firstName) &&
-               lastName.equals(contact.lastName))||
+        return (firstName.equalsIgnoreCase(contact.firstName) &&
+               lastName.equalsIgnoreCase(contact.lastName))||
                phoneNumber.equals(contact.phoneNumber)||
                email.equals(contact.email);
     }
