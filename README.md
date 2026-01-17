@@ -116,6 +116,7 @@
 
 - *16th Jan 2026 (Friday)*: Solved and studied about various input methods from console and file and problems related to linear search and binary search along with UC1 and UC 2 of Address Book System.
 
+- *17th Jan 2026 (Saturday)*: Solved the Address book problem its all use cases till 12 and some secenario based problem on oops.
 
 
 
