@@ -52,7 +52,7 @@ public class AddressBookService {
         try {
             for(Contact contact:addressBookRepository.getAddressBook().get(bookName)){
                 if(contact.getFirstName().equalsIgnoreCase(firstName)){
-                    addressBookRepository.getAddressBook().get(bookName).remove(contact);
+                    addressBookRepository.deleteContact(bookName, contact);
                     System.out.println("Contact Deleted Successfully");
                     return;
                 }

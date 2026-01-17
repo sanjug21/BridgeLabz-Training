@@ -122,8 +122,7 @@ public class AddressBookMain {
         System.out.println("---- Delete Contact UI ----\n");
         System.out.println("Enter first name to delete the contact: ");
         String firstName=sc.next();
-
-        
+        addressBookService.deleteContact(bookName,firstName);        
     }
 
     public static void viewContactsUI(){

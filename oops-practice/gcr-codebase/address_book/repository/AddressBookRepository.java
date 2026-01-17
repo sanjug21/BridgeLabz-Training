@@ -39,10 +39,8 @@ public class AddressBookRepository {
     }
 
     // UC 4: Ability to delete contact from address book
-
-
-
-
-
+    public void deleteContact(String bookName,Contact contact){
+        addressBook.get(bookName).remove(contact);
+    }
 
 }
