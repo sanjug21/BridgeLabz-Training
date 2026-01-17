@@ -107,7 +107,38 @@ public class AddressBookService {
         }
         return contactsList;
     }
-    
+    // UC 9: Ability to view contacts by city 
+    public Map<String, List<Contact>> viewContactsByCity() {
+        Map<String, List<Contact>> contactsMap = new HashMap<>();
+        for (Map.Entry<String, List<Contact>> entry : addressBookRepository.getAddressBook().entrySet()) {
+           for(Contact contact:entry.getValue()){
+            String city=contact.getCity();
+            if(!contactsMap.containsKey(city)){
+                contactsMap.put(city,new ArrayList<>());
+            }
+            contactsMap.get(city).add(contact);
+           }
+
+
+        }
+        return contactsMap;
+
+    }
+    // UC 9: Ability to view contacts by state
+    public Map<String, List<Contact>> viewContactsByState() {
+        Map<String, List<Contact>> contactsMap = new HashMap<>();
+        for(Map.Entry<String, List<Contact>> entry:addressBookRepository.getAddressBook().entrySet()){
+            for(Contact contact:entry.getValue()){
+                String state=contact.getState();
+                if(!contactsMap.containsKey(state)){
+                    contactsMap.put(state,new ArrayList<>());
+                }
+                contactsMap.get(state).add(contact);
+            }
+                
+        }
+        return contactsMap;
+    }
 
     public Map<String, List<Contact>> getAllContacts(){
         return addressBookRepository.getAddressBook();

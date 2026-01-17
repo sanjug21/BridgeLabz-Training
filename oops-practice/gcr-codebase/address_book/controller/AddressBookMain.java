@@ -18,6 +18,8 @@ public class AddressBookMain {
             System.out.println("2. Work with an Address Book (Add/Edit/Delete/display Contacts)");
             System.out.println("3. Search Person by City");
             System.out.println("4. Search Person by State");
+            System.out.println("5. View Persons by City");
+            System.out.println("6. View Persons by State");
             System.out.println("9. Exit");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
@@ -39,6 +41,13 @@ public class AddressBookMain {
                     String state=sc.next();
                     displayContacts(addressBookService.getContactsByState(state));
                     break;
+                case 5:
+                    displayDictionary("City",addressBookService.viewContactsByCity());
+                    break;
+                case 6:
+                    displayDictionary("State",addressBookService.viewContactsByState());
+                    break;
+
             
                 default:
                     System.out.println("Invalid Choice. Please try again.");
@@ -63,9 +72,8 @@ public class AddressBookMain {
             System.out.println("1. Add Contact");
             System.out.println("2. Edit Contact");
             System.out.println("3. Delete Contact");
-            System.out.println("4. Add New Address Book");
-            System.out.println("5. View all Contacts");
-            System.out.println("6. Exit");
+            System.out.println("4. View all Contacts");
+            System.out.println("5. Back to Main Menu");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
 
@@ -80,12 +88,9 @@ public class AddressBookMain {
                     deleteContactUI(chooseBookName());
                     break;
                 case 4:
-                    addNewAddressBookUI();
-                    break;
-                case 5:
                     viewContactsUI();
                     break;
-                case 6:
+                case 5:
                     exit=true;
                     break;
                 default:
@@ -217,5 +222,20 @@ public class AddressBookMain {
         }
     }
 
- 
+    private static void displayDictionary(String stateOrCity,Map<String, List<Contact>> map) {
+        if (map.isEmpty()) {
+            System.out.println("No records found.");
+            return;
+        }
+        map.forEach((key, list) -> {
+            System.out.println(stateOrCity + ": "+key);
+            int count = 1;
+            for (Contact contact : list) {
+                System.out.println(count + ".");
+                System.out.println(contact);
+                count++;
+            }
+            System.out.println();
+        });
+    }
 }
