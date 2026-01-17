@@ -166,12 +166,11 @@ public class AddressBookService {
     }
 
     // UC 11: Ability to sort the contacts in each address book by first name
-    public Map<String, List<Contact>> sortContactsByFirstName(boolean ascendingOrder) {
-        Map<String, List<Contact>> sortedContacts = new HashMap<>();
-        for(Map.Entry<String, List<Contact>> entry:addressBookRepository.getAddressBook().entrySet()){
-            sortedContacts.put(entry.getKey(),new ArrayList<>());
-            sortedContacts.get(entry.getKey()).addAll(entry.getValue());
-            Collections.sort(sortedContacts.get(entry.getKey()), new Comparator<Contact>() {
+    public void sortContactsByFirstName(boolean ascendingOrder) {
+        Map<String, List<Contact>> addressBook = addressBookRepository.getAddressBook();
+        for (Map.Entry<String, List<Contact>> entry : addressBook.entrySet()) {
+            List<Contact> contacts = entry.getValue();
+            Collections.sort(contacts, new Comparator<Contact>() {
                 @Override
                 public int compare(Contact contact1, Contact contact2) {
                     if (ascendingOrder) {
@@ -182,8 +181,61 @@ public class AddressBookService {
                 }
             });
         }
+    }
+
+
+    // UC 12: Ability to sort the contacts in each address book by city
+    public void sortContactsByCity(boolean ascendingOrder) {
+        Map<String,List<Contact>> addressBook=addressBookRepository.getAddressBook();
+        for(Map.Entry<String, List<Contact>> entry:addressBook.entrySet()){
+            List<Contact> contacts=entry.getValue();
+            Collections.sort(contacts, new Comparator<Contact>() {
+                @Override
+                public int compare(Contact contact1, Contact contact2) {
+                    if (ascendingOrder) {
+                        return contact1.getCity().compareTo(contact2.getCity());
+                    } else {
+                        return contact2.getCity().compareTo(contact1.getCity());
+                    }
+                }
+            });
+        }
         
-        return sortedContacts;
+    }
+    // UC 12: Ability to sort the contacts in each address book by state
+    public void sortContactsByState(boolean ascendingOrder) {
+        Map<String, List<Contact>> addressBook = addressBookRepository.getAddressBook();
+        for (Map.Entry<String, List<Contact>> entry : addressBook.entrySet()) {
+            List<Contact> contacts = entry.getValue();
+            Collections.sort(contacts, new Comparator<Contact>() {
+                @Override
+                public int compare(Contact contact1, Contact contact2) {
+                    if (ascendingOrder) {
+                      return contact1.getState().compareTo(contact2.getState());
+                    } else {
+                        return contact2.getState().compareTo(contact1.getState());
+
+                    }
+                }
+            });
+        }
+    }
+    // UC 12: Ability to sort the contacts in each address book by zip
+    public void sortContactsByZip(boolean ascendingOrder) {
+        Map<String, List<Contact>> addressBook = addressBookRepository.getAddressBook();
+        for (Map.Entry<String, List<Contact>> entry : addressBook.entrySet()) {
+            List<Contact> contacts = entry.getValue();
+            Collections.sort(contacts, new Comparator<Contact>() {
+                @Override
+                public int compare(Contact contact1, Contact contact2) {
+                    if (ascendingOrder) {
+                        return contact1.getZip().compareTo(contact2.getZip());
+                    } else {
+                        return contact2.getZip().compareTo(contact1.getZip());
+                    }
+                }
+            });
+        }
     }
 
     public Map<String, List<Contact>> getAllContacts(){

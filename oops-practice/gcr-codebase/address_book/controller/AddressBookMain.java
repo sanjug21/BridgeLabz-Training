@@ -132,14 +132,33 @@ public class AddressBookMain {
         while(!exit){
             System.out.println("---- Sorting Contacts ----");
             System.out.println("1. Sort by First Name");
+            System.out.println("2. Sort by City");
+            System.out.println("3. Sort by State");
+            System.out.println("4. Sort by Zip");
             System.out.println("5. Back to Main Menu");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
-
+            boolean ascendingOrder;
             switch (choice) {
                 case 1:
-                    boolean ascendingOrder=chooseOrder();
-                    displaySortedContacts("First Name",ascendingOrder,addressBookService.sortContactsByFirstName(ascendingOrder));
+                    ascendingOrder=chooseOrder();
+                    addressBookService.sortContactsByFirstName(ascendingOrder);
+                    displaySortedContacts("First Name",ascendingOrder);
+                    break;
+                case 2:
+                    ascendingOrder=chooseOrder();
+                    addressBookService.sortContactsByCity(ascendingOrder);
+                    displaySortedContacts("City",ascendingOrder);
+                    break;
+                case 3:
+                    ascendingOrder=chooseOrder();
+                    addressBookService.sortContactsByState(ascendingOrder);
+                    displaySortedContacts("State",ascendingOrder);
+                    break;
+                case 4:
+                    ascendingOrder=chooseOrder();
+                    addressBookService.sortContactsByZip(ascendingOrder);
+                    displaySortedContacts("Zip",ascendingOrder);
                     break;
                 case 5:
                     exit=true;
@@ -320,11 +339,8 @@ public class AddressBookMain {
         });
     }
 
-    private static void displaySortedContacts(String basedOn,boolean ascendingOrder,Map<String, List<Contact>> sortedContacts) {
-        if(sortedContacts.isEmpty()){
-            System.out.println("No contacts found.");
-            return;
-        }
+    private static void displaySortedContacts(String basedOn,boolean ascendingOrder) {
+        Map<String, List<Contact>> sortedContacts=addressBookService.getAllContacts();
         String order=ascendingOrder?"Ascending Order":"Decending Order";
         boolean noContacts=true;
         for (Map.Entry<String, List<Contact>> entry : sortedContacts.entrySet()) {
