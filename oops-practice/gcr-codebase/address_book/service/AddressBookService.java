@@ -13,6 +13,7 @@ public class AddressBookService {
     }
     // UC 1: Ability to create a new address book contact
     // UC 2: Add contact to address book
+    // UC 5: Ability to create multiple contact
 
     public void addContactToBook(String bookName, Contact contact) {
         try {
@@ -59,6 +60,23 @@ public class AddressBookService {
             }
             throw new Exception("Contact Not Found");
         }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // UC 6: Ability to create multiple unique address books
+    public void addNewBook(String bookName) {
+        try {
+            for(String name:getAddressBookNames()){
+                if(name.equalsIgnoreCase(bookName)){
+                    throw new Exception("Book Already Exists");
+                }
+            
+            }
+            addressBookRepository.addNewBook(bookName);
+            System.out.println("Book Added Successfully");
+            
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

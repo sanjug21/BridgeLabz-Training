@@ -16,6 +16,7 @@ public class AddressBookMain {
             System.out.println("2. Edit Contact");
             System.out.println("3. Delete Contact");
             System.out.println("4. View Contacts");
+            System.out.println("5. Add new address book");
             System.out.println("4. Exit");
             int choice=sc.nextInt();
 
@@ -37,6 +38,10 @@ public class AddressBookMain {
                     viewContactsUI();
                     break;
                 case 5:
+                    addNewAddressBookUI();
+                    break;
+                case 6:
+
             
                 default:
                     System.out.println("Invalid Choice. Please try again.");
@@ -48,6 +53,7 @@ public class AddressBookMain {
     }
     // UC 1: Ability to create a new address book contact
     // UC 2: Add contact to address book
+    // UC 5: Ability to create multiple contact
     public static void addContactUI(String bookName) {
         System.out.println("---- Add Contact UI ----\n");
         System.out.println("Enter First Name: ");
@@ -123,6 +129,14 @@ public class AddressBookMain {
         System.out.println("Enter first name to delete the contact: ");
         String firstName=sc.next();
         addressBookService.deleteContact(bookName,firstName);        
+    }
+
+    // UC 6: Ability to create multiple unique address books
+    public static void addNewAddressBookUI(){
+        System.out.println("---- Add New Book UI ----\n");
+        System.out.println("Enter Book Name: ");
+        String bookName=sc.next();
+        addressBookService.addNewBook(bookName);
     }
 
     public static void viewContactsUI(){

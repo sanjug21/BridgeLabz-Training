@@ -12,20 +12,21 @@ public class AddressBookRepository {
     public Map<String, List<Contact>> getAddressBook() {
         return addressBook;
     }
-
+    
+    // UC 6: Ability to create multiple unique address books
     public void addNewBook(String bookName) {
-        addressBook.putIfAbsent(bookName, new ArrayList<>());
+        addressBook.put(bookName, new ArrayList<>());
     }
 
 
     // UC 1: Ability to create a new address book contact
     // UC 2: Add contact to address book
+    // UC 5: Ability to create multiple contact
     public void addContact(String bookName,Contact contact) {
         addressBook.get(bookName).add(contact);
     }
 
     // UC 3: Ability to edit contact from address book
-
     public void editContact(String bookName,Contact contact,Contact updatedContact){
                 contact.setFirstName(updatedContact.getFirstName());
                 contact.setLastName(updatedContact.getLastName());
@@ -42,5 +43,7 @@ public class AddressBookRepository {
     public void deleteContact(String bookName,Contact contact){
         addressBook.get(bookName).remove(contact);
     }
+
+  
 
 }
