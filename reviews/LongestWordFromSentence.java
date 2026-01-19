@@ -13,5 +13,6 @@ public class LongestWordFromSentence {
         }
         System.out.println(LongestWord);
         System.out.println("Length of the word"+LongestWord+" is: "+maxLength);
+        sc.close();
     }
 }
