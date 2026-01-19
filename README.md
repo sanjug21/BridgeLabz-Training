@@ -51,7 +51,10 @@
 28. [Vehicle Rental System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/VehicleRentalSystem.java)
 
 # DSA Scenario Based Problems
-
+ 
+1. [Book Shelf](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/book_shelf)
+2. [Browser Buddy](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/browser_buddy)
+3. [Traffic Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/traffic_manager)
 
 
 
