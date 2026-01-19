@@ -49,13 +49,15 @@
 26. [Flight Booking System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/FlightBookingSystem.java)
 27. [Hospital Management System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/HospitalManagementSystem.java)
 28. [Vehicle Rental System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/VehicleRentalSystem.java)
+29. [Employee Role](https://github.com/sanjug21/BridgeLabz-Training/tree/reviews/reviews/employee_role)
 
 # DSA Scenario Based Problems
  
 1. [Book Shelf](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/book_shelf)
 2. [Browser Buddy](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/browser_buddy)
 3. [Traffic Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/traffic_manager)
-
+4. [Online Exam Review System](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/online_exam_review_system)
+5. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/parcel_tracker)
 
 
 
@@ -107,7 +109,7 @@
 
 - *9th Jan 2026 (Friday)*: Solved problems based on singly, doubly and circular linked list and midOfList and reverseList questions on leetcode and 3 scenario based problems i.e. HotelManagement, VehicleRent and FlightBooking.
 
-# Week 5: Data Structures in Java
+# Week 5: Getting started with Data Structures in Java
 
 - *12th Jan 2026 (Monday)*: Solved scenario based problem related to oops concepts problems include BankingSystem, InventoryManagement, ECommerce, StudentCourses, CabBooking and HospitalManagement.
 
@@ -120,6 +122,12 @@
 - *16th Jan 2026 (Friday)*: Solved and studied about various input methods from console and file and problems related to linear search and binary search along with UC1 and UC 2 of Address Book System.
 
 - *17th Jan 2026 (Saturday)*: Solved the Address book problem its all use cases till 12 and some secenario based problem on oops.
+
+# Week 6: Data Structures and Algorithms
+
+- *19th Jan 2026 (Monday)*: Solved problems to understand the run time analysis of Algorithms and scenario based problems i.e. Online Exam Review System and Parcel Tracker along with review on oops and dsa.
+
+
 
 
 
