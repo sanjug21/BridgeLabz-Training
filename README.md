@@ -58,6 +58,7 @@
 3. [Traffic Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/traffic_manager)
 4. [Online Exam Review System](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/online_exam_review_system)
 5. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/parcel_tracker)
+6. [Movie Schedule Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/movie_schedule_manager)
 
 
 
@@ -123,9 +124,11 @@
 
 - *17th Jan 2026 (Saturday)*: Solved the Address book problem its all use cases till 12 and some secenario based problem on oops.
 
-# Week 6: Data Structures and Algorithms
+# Week 6: Collections and Sreams in Java
 
 - *19th Jan 2026 (Monday)*: Solved problems to understand the run time analysis of Algorithms and scenario based problems i.e. Online Exam Review System and Parcel Tracker along with review on oops and dsa.
+
+- *20th Jan 2026 (Tuesday)*: Solved leetcode problems related to stack, queue and scenario based problem i.e. Movie schedule manager and problems related to generics in new collection branch.
 
 
 
