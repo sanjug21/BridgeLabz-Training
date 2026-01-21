@@ -60,6 +60,11 @@
 5. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/parcel_tracker)
 6. [Movie Schedule Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/movie_schedule_manager)
 
+# Collections Scenario Based Problems
+
+1. [Rank Sheet Generator](https://github.com/sanjug21/BridgeLabz-Training/blob/collections-practice/collections-practice/scenario-based/RankSheetGenerator.java)
+2. [Smart Checkout](https://github.com/sanjug21/BridgeLabz-Training/blob/collections-practice/collections-practice/scenario-based/SmartCheckout.java)
+
 
 
 # Week 1: Getting started with Java and its fundamentals
@@ -129,6 +134,12 @@
 - *19th Jan 2026 (Monday)*: Solved problems to understand the run time analysis of Algorithms and scenario based problems i.e. Online Exam Review System and Parcel Tracker along with review on oops and dsa.
 
 - *20th Jan 2026 (Tuesday)*: Solved leetcode problems related to stack, queue and scenario based problem i.e. Movie schedule manager and problems related to generics in new collection branch.
+
+- *21st Jan 2026 (Wednesday)*: Solved collections problems i.e stack, queue and HashSet and scenario based problem i.e. smartCheckout and rankSheetGenerator along with two leetcode problems on HashTable.
+
+- *22nd Jan 2026 (Thursday)*:
+
+
 
 
 
