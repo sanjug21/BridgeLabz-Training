@@ -65,6 +65,8 @@
 1. [Rank Sheet Generator](https://github.com/sanjug21/BridgeLabz-Training/blob/collections-practice/collections-practice/scenario-based/RankSheetGenerator.java)
 2. [Smart Checkout](https://github.com/sanjug21/BridgeLabz-Training/blob/collections-practice/collections-practice/scenario-based/SmartCheckout.java)
 
+3. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/parcel_tracker)
+
 
 
 # Week 1: Getting started with Java and its fundamentals
@@ -137,7 +139,9 @@
 
 - *21st Jan 2026 (Wednesday)*: Solved collections problems i.e stack, queue and HashSet and scenario based problem i.e. smartCheckout and rankSheetGenerator along with two leetcode problems on HashTable.
 
-- *22nd Jan 2026 (Thursday)*:
+- *22nd Jan 2026 (Thursday)*: Solved collection problem i.e. HashMap, bankingSystem, InsurancePolicySystem etc. and a scenario based problem i.e. Parcel Tracker and Climbing Stairs and houseRobber on leetcode.
+
+- *23rd Jan 2026 (Friday)*:
 
 
 
