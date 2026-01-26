@@ -1,0 +1,6 @@
+info: startup complete
+warning: low disk space
+error: failed to connect to db
+Info: retrying connection
+ERROR: timeout while waiting for response
+trace: finished
