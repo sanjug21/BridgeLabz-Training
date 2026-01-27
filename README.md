@@ -67,6 +67,8 @@
 
 3. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/parcel_tracker)
 
+4. [Lexical Twist](https://github.com/sanjug21/BridgeLabz-Training/blob/collections-practice/collections-practice/scenario-based/LexicalTwist.java)
+
 
 
 # Week 1: Getting started with Java and its fundamentals
@@ -141,7 +143,9 @@
 
 - *22nd Jan 2026 (Thursday)*: Solved collection problem i.e. HashMap, bankingSystem, InsurancePolicySystem etc. and a scenario based problem i.e. Parcel Tracker and Climbing Stairs and houseRobber on leetcode.
 
-- *23rd Jan 2026 (Friday)*:
+- *23rd Jan 2026 (Friday)*: Solved problems related to streams in java.
+
+- *27th Jan 2026 (Tuesday)*: Solved problems related to exception handling in java and two leetcode problems i.e. minPairRemove and minCostToClimbStairs and a scenario based problem. 
 
 
 
