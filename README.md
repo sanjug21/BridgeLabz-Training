@@ -15,8 +15,8 @@
 11. [Rohans Library](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/RohansLibrary.java)
 12. [Sandeep Fitness Challenge](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/SandeepFitnessChallenge.java)
 13. [Snake And Ladder](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/SnakeAndLadder.java)
-
-
+14. [Lexical Twist](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/LexicalTwist.java)
+15. [Flip Key](https://github.com/sanjug21/BridgeLabz-Training/blob/core-java-practice/core-java-practice/scenario-based/CleanseAndInvert.java)
 
 
 # OOPS Scenario Based Problems
@@ -51,6 +51,7 @@
 28. [Vehicle Rental System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/VehicleRentalSystem.java)
 29. [Employee Role](https://github.com/sanjug21/BridgeLabz-Training/tree/reviews/reviews/employee_role)
 
+
 # DSA Scenario Based Problems
  
 1. [Book Shelf](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/book_shelf)
@@ -60,6 +61,7 @@
 5. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/parcel_tracker)
 6. [Movie Schedule Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/movie_schedule_manager)
 
+
 # Collections Scenario Based Problems
 
 1. [Rank Sheet Generator](https://github.com/sanjug21/BridgeLabz-Training/blob/collections-practice/collections-practice/scenario-based/RankSheetGenerator.java)
@@ -67,8 +69,9 @@
 
 3. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/parcel_tracker)
 
-4. [Lexical Twist](https://github.com/sanjug21/BridgeLabz-Training/blob/collections-practice/collections-practice/scenario-based/LexicalTwist.java)
+4. [Restaurant Table Booking System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/restaurant_table_booking_system)
 
+5. [File Backup Scheduler](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/file_backup_scheduler)
 
 
 # Week 1: Getting started with Java and its fundamentals
@@ -147,7 +150,7 @@
 
 - *27th Jan 2026 (Tuesday)*: Solved problems related to exception handling in java and two leetcode problems i.e. minPairRemove and minCostToClimbStairs and a scenario based problem. 
 
-
+- *28th Jan 2026 (Wednesday)*: Solved problems related to regex and 3 scenario based i.e. restarantTableBookinSystem, fileBackupScheduler and FlipKeys and two leetcode problems which includes decodeString and balancedMaximumSubstring. 
 
 
 
