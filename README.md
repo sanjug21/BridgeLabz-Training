@@ -66,11 +66,8 @@
 
 1. [Rank Sheet Generator](https://github.com/sanjug21/BridgeLabz-Training/blob/collections-practice/collections-practice/scenario-based/RankSheetGenerator.java)
 2. [Smart Checkout](https://github.com/sanjug21/BridgeLabz-Training/blob/collections-practice/collections-practice/scenario-based/SmartCheckout.java)
-
 3. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/parcel_tracker)
-
 4. [Restaurant Table Booking System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/restaurant_table_booking_system)
-
 5. [File Backup Scheduler](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/file_backup_scheduler)
 
 
