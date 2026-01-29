@@ -50,6 +50,7 @@
 27. [Hospital Management System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/HospitalManagementSystem.java)
 28. [Vehicle Rental System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/VehicleRentalSystem.java)
 29. [Employee Role](https://github.com/sanjug21/BridgeLabz-Training/tree/reviews/reviews/employee_role)
+30. [Future Logistics](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/future_logistics)
 
 
 # DSA Scenario Based Problems
@@ -69,6 +70,7 @@
 3. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/parcel_tracker)
 4. [Restaurant Table Booking System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/restaurant_table_booking_system)
 5. [File Backup Scheduler](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/file_backup_scheduler)
+6. [Book My Hotel](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/book_my_hotel)
 
 
 # Week 1: Getting started with Java and its fundamentals
@@ -148,7 +150,8 @@
 - *27th Jan 2026 (Tuesday)*: Solved problems related to exception handling in java and two leetcode problems i.e. minPairRemove and minCostToClimbStairs and a scenario based problem. 
 
 - *28th Jan 2026 (Wednesday)*: Solved problems related to regex and 3 scenario based i.e. restarantTableBookinSystem, fileBackupScheduler and FlipKeys and two leetcode problems which includes decodeString and balancedMaximumSubstring. 
-
+ 
+- *29th Jan 2026 (Thursday)*: Solved scenario based problem i.e. BookMyHotel and Future Logistics along with junit test cases for various problem statements.
 
 
 
