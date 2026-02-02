@@ -147,11 +147,19 @@
 
 - *23rd Jan 2026 (Friday)*: Solved problems related to streams in java.
 
+# Week 7: Advanced Topics in Java
+
 - *27th Jan 2026 (Tuesday)*: Solved problems related to exception handling in java and two leetcode problems i.e. minPairRemove and minCostToClimbStairs and a scenario based problem. 
 
 - *28th Jan 2026 (Wednesday)*: Solved problems related to regex and 3 scenario based i.e. restarantTableBookinSystem, fileBackupScheduler and FlipKeys and two leetcode problems which includes decodeString and balancedMaximumSubstring. 
  
 - *29th Jan 2026 (Thursday)*: Solved scenario based problem i.e. BookMyHotel and Future Logistics along with junit test cases for various problem statements.
+
+- *30th Jan 2026 (Friday)*: Solved problems related to annotation handling and reflections in Java.
+
+# Week 8: IO Programming 
+
+- *2nd Feb 2026 (Monday)*: Solved problems related to CSV File handling in Java along with some scenario based problems.
 
 
 
