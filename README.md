@@ -61,6 +61,7 @@
 4. [Online Exam Review System](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/online_exam_review_system)
 5. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/parcel_tracker)
 6. [Movie Schedule Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/movie_schedule_manager)
+7. [Aero Vigil](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/aero_vigil)
 
 
 # Collections Scenario Based Problems
@@ -71,6 +72,7 @@
 4. [Restaurant Table Booking System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/restaurant_table_booking_system)
 5. [File Backup Scheduler](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/file_backup_scheduler)
 6. [Book My Hotel](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/book_my_hotel)
+7. [Stream Buzz](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/stream_buzz)
 
 
 # Week 1: Getting started with Java and its fundamentals
