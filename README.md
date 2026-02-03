@@ -62,6 +62,8 @@
 5. [Parcel Tracker](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/parcel_tracker)
 6. [Movie Schedule Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/movie_schedule_manager)
 7. [Aero Vigil](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/aero_vigil)
+8. [Factory Robot Hazard Analyzer](https://github.com/sanjug21/BridgeLabz-Training/tree/dsa-practice/dsa-practice/scenario-based/factory_robot_hazard_analyzer)
+
 
 
 # Collections Scenario Based Problems
@@ -162,6 +164,8 @@
 # Week 8: IO Programming 
 
 - *2nd Feb 2026 (Monday)*: Solved problems related to CSV File handling in Java along with some scenario based problems.
+- *3rd Feb 2026 (Tuesday)*: Solved problem related to stream apis and json and scenario based problems that includes Factory Robot Hazard Analyzer and stream buzz.
+- *4th Feb 2026 (Wednesday)*:
 
 
 
