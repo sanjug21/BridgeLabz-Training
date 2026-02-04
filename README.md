@@ -51,6 +51,8 @@
 28. [Vehicle Rental System](https://github.com/sanjug21/BridgeLabz-Training/blob/dsa-practice/dsa-practice/scenario-based/VehicleRentalSystem.java)
 29. [Employee Role](https://github.com/sanjug21/BridgeLabz-Training/tree/reviews/reviews/employee_role)
 30. [Future Logistics](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/future_logistics)
+31. [Food Delivery Routing System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/food_delivery_routing)
+32. [Online Classroom Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/online_classroom_attendance)
 
 
 # DSA Scenario Based Problems
@@ -165,7 +167,8 @@
 
 - *2nd Feb 2026 (Monday)*: Solved problems related to CSV File handling in Java along with some scenario based problems.
 - *3rd Feb 2026 (Tuesday)*: Solved problem related to stream apis and json and scenario based problems that includes Factory Robot Hazard Analyzer and stream buzz.
-- *4th Feb 2026 (Wednesday)*:
+- *4th Feb 2026 (Wednesday)*: Solved problem related to functional interface that includes predicate, consumer, supplier , function and default & static methods along with scenario based problems.
+- *5th Feb 2026 (Thursday)*:
 
 
 
