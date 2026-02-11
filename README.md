@@ -77,7 +77,10 @@
 5. [File Backup Scheduler](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/file_backup_scheduler)
 6. [Book My Hotel](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/book_my_hotel)
 7. [Stream Buzz](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/stream_buzz)
-
+8. [Employee Leave Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/employee_leave_management_system)
+9. [Music Playlist Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/music_playlist_manager)
+10. [Smart Energy Moniter](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/smart_energy_monitor)
+11. [Online Auction System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/online_auction_system)
 
 # Week 1: Getting started with Java and its fundamentals
 
@@ -163,12 +166,19 @@
 
 - *30th Jan 2026 (Friday)*: Solved problems related to annotation handling and reflections in Java.
 
-# Week 8: IO Programming 
+# Week 8: IO Programming and Multithreading in Java
 
 - *2nd Feb 2026 (Monday)*: Solved problems related to CSV File handling in Java along with some scenario based problems.
 - *3rd Feb 2026 (Tuesday)*: Solved problem related to stream apis and json and scenario based problems that includes Factory Robot Hazard Analyzer and stream buzz.
 - *4th Feb 2026 (Wednesday)*: Solved problem related to functional interface that includes predicate, consumer, supplier , function and default & static methods along with scenario based problems.
-- *5th Feb 2026 (Thursday)*:
+- *5th Feb 2026 (Thursday)*: Solved problem related to multithreading and concurrency in java and lambda expressions.
+- *6th Feb 2026 (Friday)*: Had a long session of soft skills training.
+- *7th Feb 2026 (Saturday)*: Solved problems related to collectors and implementation of sonarQube in projects.
+
+# Week 9: Design Patterns and Best Practices
+
+- *10th Feb 2026 (Monday)*: Solved problems related to design patterns in java that includes singleton, factory, observer and strategy pattern.
+- *11th Feb 2026 (Tuesday)*: Had a mock test on core java, oops, dsa and collections, streams and java-8 features.
 
 
 
