@@ -14,6 +14,10 @@ public class EmployeeWageService {
     
     // UC5: Constants for monthly wage calculation - Assume 20 Working Days per Month
     public static final int WORKING_DAYS_PER_MONTH = 20;
+    
+    // UC6: Constants for wage calculation with conditions - Max 100 hours and 20 days
+    public static final int MAX_WORKING_HOURS_PER_MONTH = 100;
+    public static final int MAX_WORKING_DAYS_PER_MONTH = 20;
 
     // UC4: Check Employee Type using Random (Absent, Part-time, or Full-time)
     public int checkEmployeeType() {
@@ -102,5 +106,54 @@ public class EmployeeWageService {
         
         System.out.println("==================================================");
         return totalMonthlyWage;
+    }
+    
+    // UC6: Helper method to get hours worked based on employee status
+    private int getHoursWorked(Employee employee) {
+        if (!employee.isPresent()) {
+            return 0;
+        } else if (employee.isPartTime()) {
+            return PART_TIME_HOURS;
+        } else {
+            return FULL_DAY_HOURS;
+        }
+    }
+    
+    //UC6: Calculate Wages till a condition of total working hours or days is reached
+    
+    public int calculateWageWithConditions(Employee employee) {
+        int totalWage = 0;
+        int totalWorkingDays = 0;
+        int totalWorkingHours = 0;
+        
+        System.out.println("\nCalculating Wage with Conditions:");
+        System.out.println("Max Working Hours: " + MAX_WORKING_HOURS_PER_MONTH);
+        System.out.println("Max Working Days: " + MAX_WORKING_DAYS_PER_MONTH);
+        System.out.println("==================================================");
+        
+        while (totalWorkingHours < MAX_WORKING_HOURS_PER_MONTH && totalWorkingDays < MAX_WORKING_DAYS_PER_MONTH) {
+            totalWorkingDays++;
+            
+            // UC6: Set employee type using existing method
+            setEmployeeType(employee);
+            
+            // UC6: Get hours worked based on employee type
+            int hoursWorked = getHoursWorked(employee);
+            
+            // UC6: Calculate daily wage using existing method
+            int dailyWage = calculateDailyWage(employee);
+            
+            // Update totals
+            totalWorkingHours += hoursWorked;
+            totalWage += dailyWage;
+            
+            System.out.println("Day " + totalWorkingDays + ": Hours: " + hoursWorked + ", Wage: Rs " + dailyWage);
+        }
+        
+        System.out.println("==================================================");
+        System.out.println("Total Working Days: " + totalWorkingDays);
+        System.out.println("Total Working Hours: " + totalWorkingHours);
+        
+        return totalWage;
     }
 }
