@@ -1,6 +1,7 @@
 package com.sanju.controller;
 
 import com.sanju.model.Employee;
+import com.sanju.model.CompanyEmpWage;
 import com.sanju.service.EmployeeWageService;
 import java.util.Scanner;
 
@@ -39,7 +40,8 @@ public class EmployeeWageController {
         System.out.println("4. UC4 - Employee Type using Switch Case");
         System.out.println("5. UC5 - Calculate Monthly Wage (20 days)");
         System.out.println("6. UC6 - Calculate Wage with Conditions (100 hours or 20 days)");
-        System.out.print("Enter your choice (1-6): ");
+        System.out.println("7. UC7 - Compute Wage using Class Method (Refactored)");
+        System.out.print("Enter your choice (1-7): ");
         
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -103,8 +105,22 @@ public class EmployeeWageController {
                 System.out.println("Total Monthly Employee Wage: Rs " + wage);
                 break;
                 
+            case 7:
+                System.out.println("Executing UC7: Compute Wage using Class Method");
+                System.out.println("===============================================");
+                // UC7: Create CompanyEmpWage object with class variables (Model layer)
+                CompanyEmpWage companyWage = new CompanyEmpWage(
+                    "Tech Solutions Pvt Ltd", 
+                    20,  // Wage per hour
+                    20,  // Max working days
+                    100  // Max working hours
+                );
+                // UC7: Call service method to compute employee wage (Service layer)
+                employeeWageService.computeCompanyEmployeeWage(companyWage);
+                break;
+                
             default:
-                System.out.println("Invalid choice! Please select a valid use case (1-6).");
+                System.out.println("Invalid choice! Please select a valid use case (1-7).");
                 break;
         }
     }

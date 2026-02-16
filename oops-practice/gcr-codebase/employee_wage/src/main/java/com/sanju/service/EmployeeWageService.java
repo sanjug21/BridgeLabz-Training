@@ -1,6 +1,7 @@
 package com.sanju.service;
 
 import com.sanju.model.Employee;
+import com.sanju.model.CompanyEmpWage;
 
 public class EmployeeWageService {
     // UC1: Constants for attendance
@@ -155,5 +156,73 @@ public class EmployeeWageService {
         System.out.println("Total Working Hours: " + totalWorkingHours);
         
         return totalWage;
+    }
+    
+   // UC7: Compute Company Employee Wage using Class Variables and Methods
+     
+    public void computeCompanyEmployeeWage(CompanyEmpWage company) {
+        int totalWage = 0;
+        int totalWorkingDays = 0;
+        int totalWorkingHours = 0;
+        
+        System.out.println("\nComputing Employee Wage for: " + company.getCompanyName());
+        System.out.println("Wage Per Hour: Rs " + company.getWagePerHour());
+        System.out.println("Max Working Days: " + company.getMaxWorkingDays());
+        System.out.println("Max Working Hours: " + company.getMaxWorkingHours());
+        System.out.println("==================================================");
+        
+        while (totalWorkingHours < company.getMaxWorkingHours() && 
+               totalWorkingDays < company.getMaxWorkingDays()) {
+            totalWorkingDays++;
+            
+            // Get employee type and hours worked
+            int empType = checkEmployeeType();
+            int hoursWorked = getHoursWorkedByType(empType);
+            int dailyWage = company.getWagePerHour() * hoursWorked;
+            
+            totalWorkingHours += hoursWorked;
+            totalWage += dailyWage;
+            
+            System.out.println("Day " + totalWorkingDays + ": " + getEmployeeStatusText(empType) + 
+                             " - Hours: " + hoursWorked + ", Wage: Rs " + dailyWage);
+        }
+        
+        System.out.println("==================================================");
+        System.out.println("Total Working Days: " + totalWorkingDays);
+        System.out.println("Total Working Hours: " + totalWorkingHours);
+        System.out.println("Total Employee Wage: Rs " + totalWage);
+        
+        // Update company object with results
+        company.setTotalWage(totalWage);
+        company.setTotalWorkingDays(totalWorkingDays);
+        company.setTotalWorkingHours(totalWorkingHours);
+    }
+    
+    // UC7: Helper method to get hours worked based on employee type
+    private int getHoursWorkedByType(int empType) {
+        switch (empType) {
+            case IS_ABSENT:
+                return 0;
+            case IS_PART_TIME:
+                return PART_TIME_HOURS;
+            case IS_FULL_TIME:
+                return FULL_DAY_HOURS;
+            default:
+                return 0;
+        }
+    }
+    
+    // UC7: Helper method to get employee status text
+    private String getEmployeeStatusText(int empType) {
+        switch (empType) {
+            case IS_ABSENT:
+                return "ABSENT";
+            case IS_PART_TIME:
+                return "PART-TIME";
+            case IS_FULL_TIME:
+                return "FULL-TIME";
+            default:
+                return "ABSENT";
+        }
     }
 }
