@@ -36,7 +36,11 @@ public class AddressBookMain {
             System.out.println("19. [Async] Load from CSV (Non-blocking)");
             System.out.println("20. [Async] Save to JSON (Non-blocking)");
             System.out.println("21. [Async] Load from JSON (Non-blocking)");
-            System.out.println("22. Exit");
+            System.out.println("22. Save Address Book to Database");
+            System.out.println("23. Load Address Book from Database");
+            System.out.println("24. [Async] Save to Database (Non-blocking)");
+            System.out.println("25. [Async] Load from Database (Non-blocking)");
+            System.out.println("26. Exit");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
 
@@ -175,6 +179,36 @@ public class AddressBookMain {
                     break;
 
                 case 22:
+                    // UC 18: Save address book to database
+                    System.out.print("Enter database name to save: ");
+                    String saveDBName = sc.next();
+                    addressBookService.saveToDatabase(saveDBName);
+                    break;
+
+                case 23:
+                    // UC 18: Load address book from database
+                    System.out.print("Enter database name to load: ");
+                    String loadDBName = sc.next();
+                    addressBookService.loadFromDatabase(loadDBName);
+                    break;
+
+                case 24:
+                    // UC 18: Async save to database (non-blocking)
+                    System.out.print("Enter database name to save (async): ");
+                    String asyncSaveDB = sc.next();
+                    addressBookService.saveToDatabaseAsync(asyncSaveDB);
+                    System.out.println("Database save started in background. You can continue using the application...");
+                    break;
+
+                case 25:
+                    // UC 18: Async load from database (non-blocking)
+                    System.out.print("Enter database name to load (async): ");
+                    String asyncLoadDB = sc.next();
+                    addressBookService.loadFromDatabaseAsync(asyncLoadDB);
+                    System.out.println("Database load started in background. You can continue using the application...");
+                    break;
+
+                case 26:
                     // UC 17: Shutdown executor before exit
                     System.out.println("Exiting application...");
                     addressBookService.waitForPendingOperations();

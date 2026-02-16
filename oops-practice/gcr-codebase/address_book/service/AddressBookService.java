@@ -6,17 +6,28 @@ import java.util.concurrent.*;
 
 import model.Contact;
 import repository.AddressBookRepository;
+import persistence.*;
 
 public class AddressBookService {
     AddressBookRepository addressBookRepository;
     // UC 17: ExecutorService for non-blocking IO operations
     private ExecutorService ioExecutor;
+    // UC 18: Persistence implementations following Open/Close Principle
+    private IDataPersistence filePersistence;
+    private IDataPersistence csvPersistence;
+    private IDataPersistence jsonPersistence;
+    private IDataPersistence databasePersistence;
     
     public AddressBookService() {
         addressBookRepository = new AddressBookRepository();
         addressBookRepository.addNewBook("Default");
         // Initialize thread pool for async IO operations
         ioExecutor = Executors.newFixedThreadPool(3);
+        // UC 18: Initialize persistence implementations
+        filePersistence = new FilePersistence();
+        csvPersistence = new CSVPersistence();
+        jsonPersistence = new JSONPersistence();
+        databasePersistence = new DatabasePersistence();
     }
     // UC 1: Ability to create a new address book contact
     // UC 2: Add contact to address book
@@ -331,6 +342,38 @@ public class AddressBookService {
         }
     }
 
+    // UC 18: Ability to save address book to database
+    public void saveToDatabase(String databaseName) {
+        try {
+            databasePersistence.save(addressBookRepository.getAddressBook(), databaseName);
+            if (!databaseName.toLowerCase().endsWith(".db")) {
+                databaseName += ".db";
+            }
+            System.out.println("Address Book saved to database successfully: " + databaseName);
+        } catch (IOException e) {
+            System.out.println("Error writing to database: " + e.getMessage());
+        }
+    }
+
+    // UC 18: Ability to load address book from database
+    public void loadFromDatabase(String databaseName) {
+        try {
+            Map<String, List<Contact>> loadedData = databasePersistence.load(databaseName);
+            // Replace current address book data with loaded data
+            addressBookRepository.getAddressBook().clear();
+            addressBookRepository.getAddressBook().putAll(loadedData);
+            
+            if (!databaseName.toLowerCase().endsWith(".db")) {
+                databaseName += ".db";
+            }
+            System.out.println("Address Book loaded from database successfully: " + databaseName);
+        } catch (FileNotFoundException e) {
+            System.out.println("Database file not found: " + databaseName);
+        } catch (IOException e) {
+            System.out.println("Error reading from database: " + e.getMessage());
+        }
+    }
+
     // UC 17: Async version - Save to file (non-blocking)
     public CompletableFuture<Void> saveToFileAsync(String fileName) {
         return CompletableFuture.runAsync(() -> {
@@ -415,6 +458,38 @@ public class AddressBookService {
                 System.out.println("[Async] JSON file not found: " + finalFileName);
             } catch (IOException e) {
                 System.out.println("[Async] Error reading from JSON file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 18: Async version - Save to Database (non-blocking)
+    public CompletableFuture<Void> saveToDatabaseAsync(String databaseName) {
+        final String finalDbName = databaseName.toLowerCase().endsWith(".db") ? databaseName : databaseName + ".db";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting Database save operation on thread: " + Thread.currentThread().getName());
+                databasePersistence.save(addressBookRepository.getAddressBook(), finalDbName);
+                System.out.println("[Async] Address Book saved to database successfully: " + finalDbName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error writing to database: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 18: Async version - Load from Database (non-blocking)
+    public CompletableFuture<Void> loadFromDatabaseAsync(String databaseName) {
+        final String finalDbName = databaseName.toLowerCase().endsWith(".db") ? databaseName : databaseName + ".db";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting Database load operation on thread: " + Thread.currentThread().getName());
+                Map<String, List<Contact>> loadedData = databasePersistence.load(finalDbName);
+                addressBookRepository.getAddressBook().clear();
+                addressBookRepository.getAddressBook().putAll(loadedData);
+                System.out.println("[Async] Address Book loaded from database successfully: " + finalDbName);
+            } catch (FileNotFoundException e) {
+                System.out.println("[Async] Database file not found: " + finalDbName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error reading from database: " + e.getMessage());
             }
         }, ioExecutor);
     }
