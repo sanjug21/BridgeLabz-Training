@@ -30,15 +30,11 @@ public class EmployeeWageController {
         System.out.println("Wage Per Hour: Rs " + employee.getWagePerHour());
         System.out.println();
 
-        // UC1: Mark attendance using random
-        employeeWageService.markAttendance(employee);
+        // UC4: Set employee type using switch case (Absent, Part-time, or Full-time)
+        employeeWageService.setEmployeeType(employee);
         System.out.println();
         
-        // UC3: Set employee work type (Part-time or Full-time)
-        employeeWageService.setEmployeeWorkType(employee);
-        System.out.println();
-        
-        // UC2 & UC3: Calculate daily wage based on attendance, work type, and wage per hour (Rs 20)
+        // UC4: Calculate daily wage using switch case
         int dailyWage = employeeWageService.calculateDailyWage(employee);
         System.out.println("Daily Employee Wage: Rs " + dailyWage);
         

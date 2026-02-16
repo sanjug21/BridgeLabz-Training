@@ -5,60 +5,76 @@ import com.sanju.model.Employee;
 public class EmployeeWageService {
     // UC1: Constants for attendance
     public static final int IS_ABSENT = 0;
-    public static final int IS_PRESENT = 1;
+    public static final int IS_PART_TIME = 1;
+    public static final int IS_FULL_TIME = 2;
     
     // UC2 & UC3: Constants for wage calculation - Full Day Hour is 8, Part Time Hour is 4
     public static final int FULL_DAY_HOURS = 8;
     public static final int PART_TIME_HOURS = 4;
 
-    // UC1: Check Employee Attendance using Random
-    public boolean checkAttendance() {
-        // Use Math.random() to generate random number (0 or 1)
-        int attendance = (int) (Math.random() * 2);
-        return attendance == IS_PRESENT;
+    // UC4: Check Employee Type using Random (Absent, Part-time, or Full-time)
+    public int checkEmployeeType() {
+        // Use Math.random() to generate random number (0, 1, or 2)
+        // 0 = Absent, 1 = Part-time, 2 = Full-time
+        return (int) (Math.random() * 3);
     }
 
-    // UC1: Mark Employee Attendance
-    public void markAttendance(Employee employee) {
-        boolean isPresent = checkAttendance();
-        employee.setPresent(isPresent);
+    // UC4: Set Employee Type using Switch Case
+    public void setEmployeeType(Employee employee) {
+        int empType = checkEmployeeType();
         
-        if (isPresent) {
-            System.out.println("Employee " + employee.getName() + " is PRESENT");
-        } else {
-            System.out.println("Employee " + employee.getName() + " is ABSENT");
+        switch (empType) {
+            case IS_ABSENT:
+                employee.setPresent(false);
+                employee.setPartTime(false);
+                System.out.println("Employee " + employee.getName() + " is ABSENT");
+                break;
+            case IS_PART_TIME:
+                employee.setPresent(true);
+                employee.setPartTime(true);
+                System.out.println("Employee " + employee.getName() + " is PRESENT (PART-TIME)");
+                break;
+            case IS_FULL_TIME:
+                employee.setPresent(true);
+                employee.setPartTime(false);
+                System.out.println("Employee " + employee.getName() + " is PRESENT (FULL-TIME)");
+                break;
+            default:
+                employee.setPresent(false);
+                employee.setPartTime(false);
+                System.out.println("Employee " + employee.getName() + " is ABSENT");
+                break;
         }
     }
     
-    // UC3: Check if employee is part-time or full-time using Random
-    public boolean isPartTime() {
-        // Use Math.random() to generate random number (0 or 1)
-        // 0 = Full Time, 1 = Part Time
-        int empType = (int) (Math.random() * 2);
-        return empType == 1;
-    }
-    
-    // UC3: Set employee work type (Part-time or Full-time)
-    public void setEmployeeWorkType(Employee employee) {
-        boolean partTime = isPartTime();
-        employee.setPartTime(partTime);
-        
-        if (partTime) {
-            System.out.println("Employee " + employee.getName() + " is PART-TIME");
-        } else {
-            System.out.println("Employee " + employee.getName() + " is FULL-TIME");
-        }
-    }
-    
-    // UC2 & UC3: Calculate Daily Employee Wage based on work type
+    // UC4: Calculate Daily Employee Wage using Switch Case
     public int calculateDailyWage(Employee employee) {
-        if (employee.isPresent()) {
-            if (employee.isPartTime()) {
-                return employee.getWagePerHour() * PART_TIME_HOURS;
-            } else {
-                return employee.getWagePerHour() * FULL_DAY_HOURS;
-            }
+        int wage = 0;
+        int empHours = 0;
+        
+        if (!employee.isPresent()) {
+            empHours = 0;
+        } else if (employee.isPartTime()) {
+            empHours = PART_TIME_HOURS;
+        } else {
+            empHours = FULL_DAY_HOURS;
         }
-        return 0;
+        
+        switch (empHours) {
+            case 0:
+                wage = 0;
+                break;
+            case PART_TIME_HOURS:
+                wage = employee.getWagePerHour() * PART_TIME_HOURS;
+                break;
+            case FULL_DAY_HOURS:
+                wage = employee.getWagePerHour() * FULL_DAY_HOURS;
+                break;
+            default:
+                wage = 0;
+                break;
+        }
+        
+        return wage;
     }
 }
