@@ -41,7 +41,8 @@ public class EmployeeWageController {
         System.out.println("5. UC5 - Calculate Monthly Wage (20 days)");
         System.out.println("6. UC6 - Calculate Wage with Conditions (100 hours or 20 days)");
         System.out.println("7. UC7 - Compute Wage using Class Method (Refactored)");
-        System.out.print("Enter your choice (1-7): ");
+        System.out.println("8. UC8 - Compute Wage for Multiple Companies (Function Parameters)");
+        System.out.print("Enter your choice (1-8): ");
         
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -119,8 +120,39 @@ public class EmployeeWageController {
                 employeeWageService.computeCompanyEmployeeWage(companyWage);
                 break;
                 
+            case 8:
+                System.out.println("Executing UC8: Compute Wage for Multiple Companies");
+                System.out.println("==================================================");
+                // UC8: Compute wage for multiple companies using function parameters
+                // Each company has different wage, working days, and working hours
+                
+                System.out.println("\n--- Company 1: Tech Solutions Pvt Ltd ---");
+                employeeWageService.computeEmployeeWageWithParams(
+                    "Tech Solutions Pvt Ltd",
+                    20,   // Rs 20 per hour
+                    20,   // 20 working days
+                    100   // 100 working hours
+                );
+                
+                System.out.println("\n--- Company 2: Infosys Limited ---");
+                employeeWageService.computeEmployeeWageWithParams(
+                    "Infosys Limited",
+                    25,   // Rs 25 per hour
+                    22,   // 22 working days
+                    120   // 120 working hours
+                );
+                
+                System.out.println("\n--- Company 3: Wipro Technologies ---");
+                employeeWageService.computeEmployeeWageWithParams(
+                    "Wipro Technologies",
+                    30,   // Rs 30 per hour
+                    18,   // 18 working days
+                    90    // 90 working hours
+                );
+                break;
+                
             default:
-                System.out.println("Invalid choice! Please select a valid use case (1-7).");
+                System.out.println("Invalid choice! Please select a valid use case (1-8).");
                 break;
         }
     }

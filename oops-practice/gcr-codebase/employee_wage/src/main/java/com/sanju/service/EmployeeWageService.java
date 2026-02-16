@@ -225,4 +225,40 @@ public class EmployeeWageService {
                 return "ABSENT";
         }
     }
+    
+    //UC8: Compute Employee Wage using Function Parameters (not class variables)
+     
+    public int computeEmployeeWageWithParams(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) {
+        int totalWage = 0;
+        int totalWorkingDays = 0;
+        int totalWorkingHours = 0;
+        
+        System.out.println("\nComputing Employee Wage for: " + companyName);
+        System.out.println("Wage Per Hour: Rs " + wagePerHour);
+        System.out.println("Max Working Days: " + maxWorkingDays);
+        System.out.println("Max Working Hours: " + maxWorkingHours);
+        System.out.println("==================================================");
+        
+        while (totalWorkingHours < maxWorkingHours && totalWorkingDays < maxWorkingDays) {
+            totalWorkingDays++;
+            
+            // Get employee type and hours worked
+            int empType = checkEmployeeType();
+            int hoursWorked = getHoursWorkedByType(empType);
+            int dailyWage = wagePerHour * hoursWorked;
+            
+            totalWorkingHours += hoursWorked;
+            totalWage += dailyWage;
+            
+            System.out.println("Day " + totalWorkingDays + ": " + getEmployeeStatusText(empType) + 
+                             " - Hours: " + hoursWorked + ", Wage: Rs " + dailyWage);
+        }
+        
+        System.out.println("==================================================");
+        System.out.println("Total Working Days: " + totalWorkingDays);
+        System.out.println("Total Working Hours: " + totalWorkingHours);
+        System.out.println("Total Employee Wage: Rs " + totalWage);
+        
+        return totalWage;
+    }
 }
