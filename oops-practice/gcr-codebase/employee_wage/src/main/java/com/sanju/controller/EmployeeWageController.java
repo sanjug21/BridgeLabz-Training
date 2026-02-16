@@ -22,7 +22,7 @@ public class EmployeeWageController {
 
     public void start() {
         // Create sample employee
-        Employee employee = new Employee("Rajesh Kumar", 101, 200);
+        Employee employee = new Employee("Rajesh Kumar", 101, 20);
         
         System.out.println("Employee Details:");
         System.out.println("Name: " + employee.getName());
@@ -30,9 +30,13 @@ public class EmployeeWageController {
         System.out.println("Wage Per Hour: Rs " + employee.getWagePerHour());
         System.out.println();
 
-
         // Mark attendance using random
         employeeWageService.markAttendance(employee);
+        System.out.println();
+        
+        // UC2: Calculate daily wage based on attendance and wage per hour (Rs 20) for full day (8 hours)
+        int dailyWage = employeeWageService.calculateDailyWage(employee);
+        System.out.println("Daily Employee Wage: Rs " + dailyWage);
         
         System.out.println("========================================");
     }
