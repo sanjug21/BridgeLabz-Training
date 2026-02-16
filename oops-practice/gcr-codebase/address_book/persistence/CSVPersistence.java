@@ -1,6 +1,7 @@
 package persistence;
 
 import java.io.*;
+import java.util.List;
 import java.util.*;
 import model.Contact;
 
