@@ -2,6 +2,7 @@ package com.sanju.controller;
 
 import com.sanju.model.Employee;
 import com.sanju.model.CompanyEmpWage;
+import com.sanju.model.EmpWageBuilder;
 import com.sanju.service.EmployeeWageService;
 import java.util.Scanner;
 
@@ -42,7 +43,8 @@ public class EmployeeWageController {
         System.out.println("6. UC6 - Calculate Wage with Conditions (100 hours or 20 days)");
         System.out.println("7. UC7 - Compute Wage using Class Method (Refactored)");
         System.out.println("8. UC8 - Compute Wage for Multiple Companies (Function Parameters)");
-        System.out.print("Enter your choice (1-8): ");
+        System.out.println("9. UC9 - Save Total Wage for Each Company (Instance Variables)");
+        System.out.print("Enter your choice (1-9): ");
         
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -151,8 +153,48 @@ public class EmployeeWageController {
                 );
                 break;
                 
+            case 9:
+                System.out.println("Executing UC9: Save Total Wage for Each Company");
+                System.out.println("===============================================");
+                // UC9: Create EmpWageBuilder instances with instance variables for each company
+                
+                EmpWageBuilder company1 = new EmpWageBuilder(
+                    "Tech Solutions Pvt Ltd",
+                    20,   // Rs 20 per hour
+                    20,   // 20 working days
+                    100   // 100 working hours
+                );
+                
+                EmpWageBuilder company2 = new EmpWageBuilder(
+                    "Infosys Limited",
+                    25,   // Rs 25 per hour
+                    22,   // 22 working days
+                    120   // 120 working hours
+                );
+                
+                EmpWageBuilder company3 = new EmpWageBuilder(
+                    "Wipro Technologies",
+                    30,   // Rs 30 per hour
+                    18,   // 18 working days
+                    90    // 90 working hours
+                );
+                
+                // UC9: Compute and save wage for each company
+                System.out.println("\n--- Computing for Company 1 ---");
+                employeeWageService.computeAndSaveEmployeeWage(company1);
+                
+                System.out.println("\n--- Computing for Company 2 ---");
+                employeeWageService.computeAndSaveEmployeeWage(company2);
+                
+                System.out.println("\n--- Computing for Company 3 ---");
+                employeeWageService.computeAndSaveEmployeeWage(company3);
+                
+                // UC9: Display all saved company wages from repository
+                employeeWageService.getRepository().displayAllCompanyWages();
+                break;
+                
             default:
-                System.out.println("Invalid choice! Please select a valid use case (1-8).");
+                System.out.println("Invalid choice! Please select a valid use case (1-9).");
                 break;
         }
     }

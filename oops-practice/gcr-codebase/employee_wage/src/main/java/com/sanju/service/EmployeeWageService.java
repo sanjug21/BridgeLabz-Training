@@ -2,8 +2,13 @@ package com.sanju.service;
 
 import com.sanju.model.Employee;
 import com.sanju.model.CompanyEmpWage;
+import com.sanju.model.EmpWageBuilder;
+import com.sanju.repository.EmployeeWageRepository;
 
 public class EmployeeWageService {
+    // UC9: Repository instance to save company wage builders
+    private EmployeeWageRepository repository;
+    
     // UC1: Constants for attendance
     public static final int IS_ABSENT = 0;
     public static final int IS_PART_TIME = 1;
@@ -19,6 +24,16 @@ public class EmployeeWageService {
     // UC6: Constants for wage calculation with conditions - Max 100 hours and 20 days
     public static final int MAX_WORKING_HOURS_PER_MONTH = 100;
     public static final int MAX_WORKING_DAYS_PER_MONTH = 20;
+    
+    // UC9: Constructor to initialize repository
+    public EmployeeWageService() {
+        this.repository = new EmployeeWageRepository();
+    }
+    
+    // UC9: Constructor with repository injection
+    public EmployeeWageService(EmployeeWageRepository repository) {
+        this.repository = repository;
+    }
 
     // UC4: Check Employee Type using Random (Absent, Part-time, or Full-time)
     public int checkEmployeeType() {
@@ -260,5 +275,54 @@ public class EmployeeWageService {
         System.out.println("Total Employee Wage: Rs " + totalWage);
         
         return totalWage;
+    }
+    
+    //UC9: Compute and Save Employee Wage using EmpWageBuilder with Instance Variables
+    
+    public void computeAndSaveEmployeeWage(EmpWageBuilder builder) {
+        int totalWage = 0;
+        int totalWorkingDays = 0;
+        int totalWorkingHours = 0;
+        
+        System.out.println("\nComputing Employee Wage for: " + builder.getCompanyName());
+        System.out.println("Wage Per Hour: Rs " + builder.getWagePerHour());
+        System.out.println("Max Working Days: " + builder.getMaxWorkingDays());
+        System.out.println("Max Working Hours: " + builder.getMaxWorkingHours());
+        System.out.println("==================================================");
+        
+        while (totalWorkingHours < builder.getMaxWorkingHours() && 
+               totalWorkingDays < builder.getMaxWorkingDays()) {
+            totalWorkingDays++;
+            
+            // Get employee type and hours worked
+            int empType = checkEmployeeType();
+            int hoursWorked = getHoursWorkedByType(empType);
+            int dailyWage = builder.getWagePerHour() * hoursWorked;
+            
+            totalWorkingHours += hoursWorked;
+            totalWage += dailyWage;
+            
+            System.out.println("Day " + totalWorkingDays + ": " + getEmployeeStatusText(empType) + 
+                             " - Hours: " + hoursWorked + ", Wage: Rs " + dailyWage);
+        }
+        
+        System.out.println("==================================================");
+        System.out.println("Total Working Days: " + totalWorkingDays);
+        System.out.println("Total Working Hours: " + totalWorkingHours);
+        System.out.println("Total Employee Wage: Rs " + totalWage);
+        
+        // UC9: Save computed values to builder instance variables
+        builder.setTotalWage(totalWage);
+        builder.setTotalWorkingDays(totalWorkingDays);
+        builder.setTotalWorkingHours(totalWorkingHours);
+        
+        // UC9: Save builder to repository
+        repository.addCompanyWageBuilder(builder);
+        System.out.println("\n*** Saved wage for " + builder.getCompanyName() + " to repository ***");
+    }
+    
+    // UC9: Get repository instance (for displaying saved wages)
+    public EmployeeWageRepository getRepository() {
+        return repository;
     }
 }
