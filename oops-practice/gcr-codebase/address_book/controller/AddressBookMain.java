@@ -6,6 +6,7 @@ import service.AddressBookService;
 public class AddressBookMain {
     static Scanner sc=new Scanner(System.in);
     static AddressBookService addressBookService=new AddressBookService();
+    
     public static void main(String[] args) {
         System.out.println("==== Welcome to Address Book System ====");
 
@@ -29,7 +30,13 @@ public class AddressBookMain {
             System.out.println("13. Load Address Book from CSV File");
             System.out.println("14. Save Address Book to JSON File");
             System.out.println("15. Load Address Book from JSON File");
-            System.out.println("16. Exit");
+            System.out.println("16. [Async] Save to File (Non-blocking)");
+            System.out.println("17. [Async] Load from File (Non-blocking)");
+            System.out.println("18. [Async] Save to CSV (Non-blocking)");
+            System.out.println("19. [Async] Load from CSV (Non-blocking)");
+            System.out.println("20. [Async] Save to JSON (Non-blocking)");
+            System.out.println("21. [Async] Load from JSON (Non-blocking)");
+            System.out.println("22. Exit");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
 
@@ -120,6 +127,58 @@ public class AddressBookMain {
                     break;
 
                 case 16:
+                    // UC 17: Async save to file (non-blocking)
+                    System.out.print("Enter file name to save (async): ");
+                    String asyncSaveFile = sc.next();
+                    addressBookService.saveToFileAsync(asyncSaveFile);
+                    System.out.println("File save started in background. You can continue using the application...");
+                    break;
+
+                case 17:
+                    // UC 17: Async load from file (non-blocking)
+                    System.out.print("Enter file name to load (async): ");
+                    String asyncLoadFile = sc.next();
+                    addressBookService.loadFromFileAsync(asyncLoadFile);
+                    System.out.println("File load started in background. You can continue using the application...");
+                    break;
+
+                case 18:
+                    // UC 17: Async save to CSV (non-blocking)
+                    System.out.print("Enter CSV file name to save (async): ");
+                    String asyncSaveCSV = sc.next();
+                    addressBookService.saveToCSVAsync(asyncSaveCSV);
+                    System.out.println("CSV save started in background. You can continue using the application...");
+                    break;
+
+                case 19:
+                    // UC 17: Async load from CSV (non-blocking)
+                    System.out.print("Enter CSV file name to load (async): ");
+                    String asyncLoadCSV = sc.next();
+                    addressBookService.loadFromCSVAsync(asyncLoadCSV);
+                    System.out.println("CSV load started in background. You can continue using the application...");
+                    break;
+
+                case 20:
+                    // UC 17: Async save to JSON (non-blocking)
+                    System.out.print("Enter JSON file name to save (async): ");
+                    String asyncSaveJSON = sc.next();
+                    addressBookService.saveToJSONAsync(asyncSaveJSON);
+                    System.out.println("JSON save started in background. You can continue using the application...");
+                    break;
+
+                case 21:
+                    // UC 17: Async load from JSON (non-blocking)
+                    System.out.print("Enter JSON file name to load (async): ");
+                    String asyncLoadJSON = sc.next();
+                    addressBookService.loadFromJSONAsync(asyncLoadJSON);
+                    System.out.println("JSON load started in background. You can continue using the application...");
+                    break;
+
+                case 22:
+                    // UC 17: Shutdown executor before exit
+                    System.out.println("Exiting application...");
+                    addressBookService.waitForPendingOperations();
+                    addressBookService.shutdown();
                     exit=true;
                     break;            
                 default:
@@ -128,6 +187,10 @@ public class AddressBookMain {
             }
 
         }
+        
+        // Final cleanup
+        sc.close();
+        System.out.println("Thank you for using Address Book System!");
 
     }
     // UC 1: Ability to create a new address book contact

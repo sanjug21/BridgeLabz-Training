@@ -2,15 +2,21 @@ package service;
 
 import java.util.*;
 import java.io.*;
+import java.util.concurrent.*;
 
 import model.Contact;
 import repository.AddressBookRepository;
 
 public class AddressBookService {
     AddressBookRepository addressBookRepository;
+    // UC 17: ExecutorService for non-blocking IO operations
+    private ExecutorService ioExecutor;
+    
     public AddressBookService() {
         addressBookRepository = new AddressBookRepository();
         addressBookRepository.addNewBook("Default");
+        // Initialize thread pool for async IO operations
+        ioExecutor = Executors.newFixedThreadPool(3);
     }
     // UC 1: Ability to create a new address book contact
     // UC 2: Add contact to address book
@@ -323,6 +329,119 @@ public class AddressBookService {
         } catch (IOException e) {
             System.out.println("Error reading from JSON file: " + e.getMessage());
         }
+    }
+
+    // UC 17: Async version - Save to file (non-blocking)
+    public CompletableFuture<Void> saveToFileAsync(String fileName) {
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting file save operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.writeToFile(fileName);
+                System.out.println("[Async] Address Book saved to file successfully: " + fileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error writing to file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Load from file (non-blocking)
+    public CompletableFuture<Void> loadFromFileAsync(String fileName) {
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting file load operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.readFromFile(fileName);
+                System.out.println("[Async] Address Book loaded from file successfully: " + fileName);
+            } catch (FileNotFoundException e) {
+                System.out.println("[Async] File not found: " + fileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error reading from file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Save to CSV (non-blocking)
+    public CompletableFuture<Void> saveToCSVAsync(String fileName) {
+        final String finalFileName = fileName.toLowerCase().endsWith(".csv") ? fileName : fileName + ".csv";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting CSV save operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.writeToCSV(finalFileName);
+                System.out.println("[Async] Address Book saved to CSV file successfully: " + finalFileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error writing to CSV file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Load from CSV (non-blocking)
+    public CompletableFuture<Void> loadFromCSVAsync(String fileName) {
+        final String finalFileName = fileName.toLowerCase().endsWith(".csv") ? fileName : fileName + ".csv";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting CSV load operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.readFromCSV(finalFileName);
+                System.out.println("[Async] Address Book loaded from CSV file successfully: " + finalFileName);
+            } catch (FileNotFoundException e) {
+                System.out.println("[Async] CSV file not found: " + finalFileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error reading from CSV file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Save to JSON (non-blocking)
+    public CompletableFuture<Void> saveToJSONAsync(String fileName) {
+        final String finalFileName = fileName.toLowerCase().endsWith(".json") ? fileName : fileName + ".json";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting JSON save operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.writeToJSON(finalFileName);
+                System.out.println("[Async] Address Book saved to JSON file successfully: " + finalFileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error writing to JSON file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Load from JSON (non-blocking)
+    public CompletableFuture<Void> loadFromJSONAsync(String fileName) {
+        final String finalFileName = fileName.toLowerCase().endsWith(".json") ? fileName : fileName + ".json";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting JSON load operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.readFromJSON(finalFileName);
+                System.out.println("[Async] Address Book loaded from JSON file successfully: " + finalFileName);
+            } catch (FileNotFoundException e) {
+                System.out.println("[Async] JSON file not found: " + finalFileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error reading from JSON file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Wait for all pending async operations to complete
+    public void waitForPendingOperations() {
+        System.out.println("[Async] Waiting for all pending IO operations to complete...");
+        try {
+            Thread.sleep(500); // Give a moment for operations to complete
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    // UC 17: Shutdown executor service gracefully
+    public void shutdown() {
+        System.out.println("[Async] Shutting down IO executor service...");
+        ioExecutor.shutdown();
+        try {
+            if (!ioExecutor.awaitTermination(5, TimeUnit.SECONDS)) {
+                ioExecutor.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            ioExecutor.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("[Async] IO executor service shut down successfully.");
     }
 
 }
