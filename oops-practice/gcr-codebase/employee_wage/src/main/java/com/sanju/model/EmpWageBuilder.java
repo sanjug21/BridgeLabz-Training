@@ -2,11 +2,14 @@ package com.sanju.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
+ * EmpWageBuilder - Manages Employee Wage for companies
  * UC9: Can be used with instance variables for single company
  * UC10: Can manage multiple CompanyEmpWage objects in a collection
+ * UC11: Implements IEmpWageBuilder interface approach for managing multiple companies
  */
-public class EmpWageBuilder {
+public class EmpWageBuilder implements IEmpWageBuilder {
     // UC9: Instance variables for single company (for backward compatibility)
     private String companyName;
     private int wagePerHour;
@@ -84,12 +87,14 @@ public class EmpWageBuilder {
         this.totalWorkingHours = totalWorkingHours;
     }
     
-    // UC10: Add a company wage to the list
+    // UC10 & UC11: Add a company wage to the list
+    @Override
     public void addCompanyWage(CompanyEmpWage company) {
         companyWages.add(company);
     }
     
-    // UC10: Get company wage by company name
+    // UC10 & UC11: Get company wage by company name
+    @Override
     public CompanyEmpWage getCompanyWage(String companyName) {
         for (CompanyEmpWage company : companyWages) {
             if (company.getCompanyName().equalsIgnoreCase(companyName)) {
@@ -99,12 +104,14 @@ public class EmpWageBuilder {
         return null;
     }
     
-    // UC10: Get all company wages
+    // UC10 & UC11: Get all company wages
+    @Override
     public List<CompanyEmpWage> getAllCompanyWages() {
         return companyWages;
     }
     
-    // UC10: Display all company wages
+    // UC10 & UC11: Display all company wages
+    @Override
     public void displayAllCompanyWages() {
         System.out.println("\n========== All Company Wages (Managed by EmpWageBuilder) ==========");
         if (companyWages.isEmpty()) {
@@ -124,12 +131,14 @@ public class EmpWageBuilder {
         System.out.println("====================================================================\n");
     }
     
-    // UC10: Get total companies managed
+    // UC10 & UC11: Get total companies managed
+    @Override
     public int getTotalCompanies() {
         return companyWages.size();
     }
     
-    // UC10: Get total wage across all companies
+    // UC10 & UC11: Get total wage across all companies
+    @Override
     public int getTotalWageAcrossAllCompanies() {
         int totalWage = 0;
         for (CompanyEmpWage company : companyWages) {

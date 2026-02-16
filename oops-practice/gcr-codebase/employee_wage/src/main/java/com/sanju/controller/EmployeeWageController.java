@@ -3,6 +3,7 @@ package com.sanju.controller;
 import com.sanju.model.Employee;
 import com.sanju.model.CompanyEmpWage;
 import com.sanju.model.EmpWageBuilder;
+import com.sanju.model.IEmpWageBuilder;
 import com.sanju.service.EmployeeWageService;
 import java.util.Scanner;
 
@@ -44,8 +45,9 @@ public class EmployeeWageController {
         System.out.println("7. UC7 - Compute Wage using Class Method (Refactored)");
         System.out.println("8. UC8 - Compute Wage for Multiple Companies (Function Parameters)");
         System.out.println("9. UC9 - Save Total Wage for Each Company (Instance Variables)");
-        System.out.println("10. UC10 - Manage Multiple Companies via EmpWageBuilder Array ");
-        System.out.print("Enter your choice (1-10): ");
+        System.out.println("10. UC10 - Manage Multiple Companies via EmpWageBuilder Array");
+        System.out.println("11. UC11 - Manage Multiple Companies using Interface Approach *** LATEST UPDATED ***");
+        System.out.print("Enter your choice (1-11): ");
         
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -231,8 +233,45 @@ public class EmployeeWageController {
                 employeeWageService.computeWageForMultipleCompanies(wageBuilder);
                 break;
                 
+            case 11:
+                System.out.println("Executing UC11: Manage Multiple Companies using Interface Approach");
+                System.out.println("===================================================================");
+                // UC11: Create EmpWageBuilder implementing IEmpWageBuilder interface
+                IEmpWageBuilder empWageBuilderInterface = new EmpWageBuilder();
+                
+                // UC11: Create CompanyEmpWage objects and add via interface
+                CompanyEmpWage interfaceWage1 = new CompanyEmpWage(
+                    "Accenture India Pvt Ltd",
+                    22,   // Rs 22 per hour
+                    21,   // 21 working days
+                    110   // 110 working hours
+                );
+                
+                CompanyEmpWage interfaceWage2 = new CompanyEmpWage(
+                    "HCL Technologies",
+                    28,   // Rs 28 per hour
+                    20,   // 20 working days
+                    105   // 105 working hours
+                );
+                
+                CompanyEmpWage interfaceWage3 = new CompanyEmpWage(
+                    "Cognizant India",
+                    26,   // Rs 26 per hour
+                    19,   // 19 working days
+                    95    // 95 working hours
+                );
+                
+                // UC11: Add companies via interface methods
+                empWageBuilderInterface.addCompanyWage(interfaceWage1);
+                empWageBuilderInterface.addCompanyWage(interfaceWage2);
+                empWageBuilderInterface.addCompanyWage(interfaceWage3);
+                
+                // UC11: Compute and display wages using interface
+                employeeWageService.computeWageWithInterface(empWageBuilderInterface);
+                break;
+                
             default:
-                System.out.println("Invalid choice! Please select a valid use case (1-10).");
+                System.out.println("Invalid choice! Please select a valid use case (1-11).");
                 break;
         }
     }

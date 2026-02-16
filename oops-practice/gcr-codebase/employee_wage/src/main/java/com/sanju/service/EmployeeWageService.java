@@ -3,6 +3,7 @@ package com.sanju.service;
 import com.sanju.model.Employee;
 import com.sanju.model.CompanyEmpWage;
 import com.sanju.model.EmpWageBuilder;
+import com.sanju.model.IEmpWageBuilder;
 import com.sanju.repository.EmployeeWageRepository;
 
 public class EmployeeWageService {
@@ -372,5 +373,24 @@ public class EmployeeWageService {
         company.setTotalWorkingHours(totalWorkingHours);
         
         System.out.println("  -> Total Wage: Rs " + totalWage + ", Days: " + totalWorkingDays + ", Hours: " + totalWorkingHours);
+    }
+    
+    // UC11: Compute and display Employee Wage using Interface approach
+    
+    public void computeWageWithInterface(IEmpWageBuilder empWageBuilder) {
+        System.out.println("\nComputing wages through IEmpWageBuilder Interface...");
+        System.out.println("==================================================================");
+        
+        // UC11: Process each CompanyEmpWage using interface methods
+        for (CompanyEmpWage company : empWageBuilder.getAllCompanyWages()) {
+            computeWageForCompany(company);
+        }
+        
+        System.out.println("==================================================================");
+        // UC11: Display summary using interface methods
+        empWageBuilder.displayAllCompanyWages();
+        
+        System.out.println("Total Companies Managed (via Interface): " + empWageBuilder.getTotalCompanies());
+        System.out.println("Total Wage Across All Companies (via Interface): Rs " + empWageBuilder.getTotalWageAcrossAllCompanies());
     }
 }
