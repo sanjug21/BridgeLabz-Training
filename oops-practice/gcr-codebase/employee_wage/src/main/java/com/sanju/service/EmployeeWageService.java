@@ -11,6 +11,9 @@ public class EmployeeWageService {
     // UC2 & UC3: Constants for wage calculation - Full Day Hour is 8, Part Time Hour is 4
     public static final int FULL_DAY_HOURS = 8;
     public static final int PART_TIME_HOURS = 4;
+    
+    // UC5: Constants for monthly wage calculation - Assume 20 Working Days per Month
+    public static final int WORKING_DAYS_PER_MONTH = 20;
 
     // UC4: Check Employee Type using Random (Absent, Part-time, or Full-time)
     public int checkEmployeeType() {
@@ -76,5 +79,28 @@ public class EmployeeWageService {
         }
         
         return wage;
+    }
+    
+   // UC5: Calculate Monthly Employee Wage
+    
+    public int calculateMonthlyWage(Employee employee) {
+        int totalMonthlyWage = 0;
+        
+        System.out.println("\nCalculating Monthly Wage for " + WORKING_DAYS_PER_MONTH + " working days:");
+        System.out.println("==================================================");
+        
+        for (int day = 1; day <= WORKING_DAYS_PER_MONTH; day++) {
+            // Set employee type for each day
+            setEmployeeType(employee);
+            
+            // Calculate daily wage
+            int dailyWage = calculateDailyWage(employee);
+            totalMonthlyWage += dailyWage;
+            
+            System.out.println("Day " + day + ": Rs " + dailyWage);
+        }
+        
+        System.out.println("==================================================");
+        return totalMonthlyWage;
     }
 }
