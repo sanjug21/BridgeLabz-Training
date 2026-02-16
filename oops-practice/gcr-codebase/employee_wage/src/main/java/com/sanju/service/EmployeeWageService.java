@@ -3,7 +3,6 @@ package com.sanju.service;
 import com.sanju.model.Employee;
 import com.sanju.model.CompanyEmpWage;
 import com.sanju.repository.EmployeeWageRepository;
-import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeWageService {
@@ -483,28 +482,55 @@ public class EmployeeWageService {
     }
     
  
-    private void displayCompanyDetails(CompanyEmpWage company, int index) {
-        if (index > 0) {
-            System.out.println("\nCompany " + index + ": " + company.getCompanyName());
-        } else {
-            System.out.println("\nCompany: " + company.getCompanyName());
-        }
-        System.out.println("Wage Per Hour: Rs " + company.getWagePerHour());
-        System.out.println("Max Working Days: " + company.getMaxWorkingDays());
-        System.out.println("Max Working Hours: " + company.getMaxWorkingHours());
-        System.out.println("Total Wage: Rs " + company.getTotalWage());
-        System.out.println("Total Working Days: " + company.getTotalWorkingDays());
-        System.out.println("Total Working Hours: " + company.getTotalWorkingHours());
-        System.out.println("-------------------------------------------------------------------");
+    // UC14: Query Total Wage by Company Name
+    public int getTotalWageByCompanyQuery(String companyName) {
+        return repository.getTotalWageByCompany(companyName);
     }
     
-    
-  
-    private int calculateTotalWageAcrossCompanies(List<CompanyEmpWage> companies) {
-        int totalWage = 0;
-        for (CompanyEmpWage company : companies) {
-            totalWage += company.getTotalWage();
+    // UC14: Display Total Wage Details for queried company
+    public void displayTotalWageForCompany(String companyName) {
+        System.out.println("\n========== UC14: QUERY TOTAL WAGE BY COMPANY ===========");
+        CompanyEmpWage company = repository.getCompanyDetailsWithWage(companyName);
+        
+        if (company == null) {
+            System.out.println("Company '" + companyName + "' not found in the system.");
+            System.out.println("Available Companies:");
+            for (CompanyEmpWage wage : repository.getAllCompanyWages()) {
+                System.out.println("  - " + wage.getCompanyName());
+            }
+        } else {
+            System.out.println("Company Name: " + company.getCompanyName());
+            System.out.println("Wage Per Hour: Rs " + company.getWagePerHour());
+            System.out.println("Max Working Days: " + company.getMaxWorkingDays());
+            System.out.println("Max Working Hours: " + company.getMaxWorkingHours());
+            System.out.println("--------------------------------------------------");
+            System.out.println("TOTAL WAGE: Rs " + company.getTotalWage());
+            System.out.println("Total Working Days: " + company.getTotalWorkingDays());
+            System.out.println("Total Working Hours: " + company.getTotalWorkingHours());
+            System.out.println("Daily Wages Count: " + company.getDailyWages().size());
+            System.out.println("--------------------------------------------------");
+            System.out.println("View Details: Execute UC13 for complete daily breakdown");
         }
-        return totalWage;
+        System.out.println("========================================================\n");
+    }
+    
+    // UC14: Helper method to validate and display all companies with their wages
+    public void displayAllCompaniesWithWages() {
+        System.out.println("\n========== ALL COMPANIES WAGE SUMMARY ===========");
+        List<CompanyEmpWage> companies = repository.getAllCompanyWages();
+        
+        if (companies.isEmpty()) {
+            System.out.println("No companies registered in the system yet.");
+        } else {
+            int totalAcrossAll = 0;
+            for (int i = 0; i < companies.size(); i++) {
+                CompanyEmpWage company = companies.get(i);
+                totalAcrossAll += company.getTotalWage();
+                System.out.println((i + 1) + ". " + company.getCompanyName() + " -> Total Wage: Rs " + company.getTotalWage());
+            }
+            System.out.println("--------------------------------------------------");
+            System.out.println("Total Wage Across All Companies: Rs " + totalAcrossAll);
+        }
+        System.out.println("===================================================\n");
     }
 }

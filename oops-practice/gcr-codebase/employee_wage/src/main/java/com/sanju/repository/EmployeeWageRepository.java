@@ -52,4 +52,23 @@ public class EmployeeWageRepository {
         }
         System.out.println("=========================================\n");
     }
+    
+    // UC14: Get total wage by company name
+    public int getTotalWageByCompany(String companyName) {
+        CompanyEmpWage company = getCompanyWage(companyName);
+        if (company != null) {
+            return company.getTotalWage();
+        }
+        return -1; // Return -1 if company not found
+    }
+    
+    // UC14: Get company details by name including total wage
+    public CompanyEmpWage getCompanyDetailsWithWage(String companyName) {
+        for (CompanyEmpWage wage : companyWages) {
+            if (wage.getCompanyName().equalsIgnoreCase(companyName)) {
+                return wage;
+            }
+        }
+        return null;
+    }
 }

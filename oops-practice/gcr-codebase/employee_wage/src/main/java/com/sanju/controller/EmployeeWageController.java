@@ -45,8 +45,9 @@ public class EmployeeWageController {
         System.out.println("7. UC7 - Compute Wage using Class Method (Refactored)");
         System.out.println("8. UC11 - Manage Multiple Companies using ArrayList");
         System.out.println("9. UC12 - Manage Multiple Companies with Advanced ArrayList");
-        System.out.println("10. UC13 - Store Daily Wages along with Total Wage *** LATEST ***");
-        System.out.print("Enter your choice (1-10): ");
+        System.out.println("10. UC13 - Store Daily Wages along with Total Wage");
+        System.out.println("11. UC14 - Get Total Wage when queried by Company");
+        System.out.print("Enter your choice (1-11): ");
         
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -156,12 +157,37 @@ public class EmployeeWageController {
                 }
                 break;
                 
+            case 11:
+                System.out.println("Executing UC14: Query Total Wage by Company");
+                System.out.println("=============================================");
+                
+                // UC14: First, setup and compute wages for multiple companies
+                List<CompanyEmpWage> companyWageListUC14 = new ArrayList<>(createMultipleCompanies());
+                
+                // UC14: Step 1 - Compute wages for all companies
+                System.out.println("\nStep 1: Computing wages for all companies...");
+                System.out.println("=======================================================");
+                for (CompanyEmpWage company : companyWageListUC14) {
+                    employeeWageService.computeCompanyEmployeeWage(company);
+                }
+                
+                // UC14: Step 2 - Display all companies wage summary
+                System.out.println("\nStep 2: Displaying all companies wage summary...");
+                employeeWageService.displayAllCompaniesWithWages();
+                
+                // UC14: Step 3 - Query specific company wage
+                System.out.println("\nStep 3: Querying specific company wages...");
+                String[] companiesList = {"Accenture India Pvt Ltd", "HCL Technologies", "Cognizant India"};
+                for (String companyName : companiesList) {
+                    employeeWageService.displayTotalWageForCompany(companyName);
+                }
+                break;
+                
             default:
-                System.out.println("Invalid choice! Please select a valid use case (1-10).");
+                System.out.println("Invalid choice! Please select a valid use case (1-11).");
                 break;
         }
     }
-    
    
     private List<CompanyEmpWage> createMultipleCompanies() {
         List<CompanyEmpWage> companies = new ArrayList<>();
