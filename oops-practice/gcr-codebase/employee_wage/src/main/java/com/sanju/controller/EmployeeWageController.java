@@ -30,11 +30,15 @@ public class EmployeeWageController {
         System.out.println("Wage Per Hour: Rs " + employee.getWagePerHour());
         System.out.println();
 
-        // Mark attendance using random
+        // UC1: Mark attendance using random
         employeeWageService.markAttendance(employee);
         System.out.println();
         
-        // UC2: Calculate daily wage based on attendance and wage per hour (Rs 20) for full day (8 hours)
+        // UC3: Set employee work type (Part-time or Full-time)
+        employeeWageService.setEmployeeWorkType(employee);
+        System.out.println();
+        
+        // UC2 & UC3: Calculate daily wage based on attendance, work type, and wage per hour (Rs 20)
         int dailyWage = employeeWageService.calculateDailyWage(employee);
         System.out.println("Daily Employee Wage: Rs " + dailyWage);
         

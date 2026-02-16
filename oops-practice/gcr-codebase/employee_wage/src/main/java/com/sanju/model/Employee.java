@@ -5,12 +5,14 @@ public class Employee {
     private int employeeId;
     private int wagePerHour;
     private boolean isPresent;
+    private boolean isPartTime; // UC3: Track if employee is part-time
 
     public Employee(String name, int employeeId, int wagePerHour) {
         this.name = name;
         this.employeeId = employeeId;
         this.wagePerHour = wagePerHour;
         this.isPresent = false;
+        this.isPartTime = false;
     }
 
     // Getters and Setters
@@ -32,5 +34,14 @@ public class Employee {
 
     public void setPresent(boolean present) {
         isPresent = present;
+    }
+    
+    // UC3: Part-time getter and setter
+    public boolean isPartTime() {
+        return isPartTime;
+    }
+
+    public void setPartTime(boolean partTime) {
+        isPartTime = partTime;
     }
 }
