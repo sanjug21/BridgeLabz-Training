@@ -25,7 +25,9 @@ public class AddressBookMain {
             System.out.println("9. Display operation (based on Name/City/State/zip)");
             System.out.println("10. Save Address Book to File");
             System.out.println("11. Load Address Book from File");
-            System.out.println("12. Exit");
+            System.out.println("12. Save Address Book to CSV File");
+            System.out.println("13. Load Address Book from CSV File");
+            System.out.println("14. Exit");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
 
@@ -88,6 +90,20 @@ public class AddressBookMain {
                     break;
 
                 case 12:
+                    // UC 14: Ability to write address book to CSV file
+                    System.out.print("Enter CSV file name to save: ");
+                    String saveCSVFileName = sc.next();
+                    addressBookService.saveToCSV(saveCSVFileName);
+                    break;
+
+                case 13:
+                    // UC 14: Ability to read address book from CSV file
+                    System.out.print("Enter CSV file name to load: ");
+                    String loadCSVFileName = sc.next();
+                    addressBookService.loadFromCSV(loadCSVFileName);
+                    break;
+
+                case 14:
                     exit=true;
                     break;            
                 default:

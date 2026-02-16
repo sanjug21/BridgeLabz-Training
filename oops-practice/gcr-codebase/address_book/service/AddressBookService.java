@@ -269,4 +269,32 @@ public class AddressBookService {
         }
     }
 
+    // UC 14: Ability to write address book to CSV file
+    public void saveToCSV(String fileName) {
+        try {
+            addressBookRepository.writeToCSV(fileName);
+            if (!fileName.toLowerCase().endsWith(".csv")) {
+                fileName += ".csv";
+            }
+            System.out.println("Address Book saved to CSV file successfully: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error writing to CSV file: " + e.getMessage());
+        }
+    }
+
+    // UC 14: Ability to read address book from CSV file
+    public void loadFromCSV(String fileName) {
+        try {
+            addressBookRepository.readFromCSV(fileName);
+            if (!fileName.toLowerCase().endsWith(".csv")) {
+                fileName += ".csv";
+            }
+            System.out.println("Address Book loaded from CSV file successfully: " + fileName);
+        } catch (FileNotFoundException e) {
+            System.out.println("CSV file not found: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error reading from CSV file: " + e.getMessage());
+        }
+    }
+
 }
