@@ -27,7 +27,9 @@ public class AddressBookMain {
             System.out.println("11. Load Address Book from File");
             System.out.println("12. Save Address Book to CSV File");
             System.out.println("13. Load Address Book from CSV File");
-            System.out.println("14. Exit");
+            System.out.println("14. Save Address Book to JSON File");
+            System.out.println("15. Load Address Book from JSON File");
+            System.out.println("16. Exit");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
 
@@ -104,6 +106,20 @@ public class AddressBookMain {
                     break;
 
                 case 14:
+                    // UC 15: Ability to write address book to JSON file
+                    System.out.print("Enter JSON file name to save: ");
+                    String saveJSONFileName = sc.next();
+                    addressBookService.saveToJSON(saveJSONFileName);
+                    break;
+
+                case 15:
+                    // UC 15: Ability to read address book from JSON file
+                    System.out.print("Enter JSON file name to load: ");
+                    String loadJSONFileName = sc.next();
+                    addressBookService.loadFromJSON(loadJSONFileName);
+                    break;
+
+                case 16:
                     exit=true;
                     break;            
                 default:

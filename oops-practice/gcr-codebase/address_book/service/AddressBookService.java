@@ -297,4 +297,32 @@ public class AddressBookService {
         }
     }
 
+    // UC 15: Ability to write address book to JSON file
+    public void saveToJSON(String fileName) {
+        try {
+            addressBookRepository.writeToJSON(fileName);
+            if (!fileName.toLowerCase().endsWith(".json")) {
+                fileName += ".json";
+            }
+            System.out.println("Address Book saved to JSON file successfully: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error writing to JSON file: " + e.getMessage());
+        }
+    }
+
+    // UC 15: Ability to read address book from JSON file
+    public void loadFromJSON(String fileName) {
+        try {
+            addressBookRepository.readFromJSON(fileName);
+            if (!fileName.toLowerCase().endsWith(".json")) {
+                fileName += ".json";
+            }
+            System.out.println("Address Book loaded from JSON file successfully: " + fileName);
+        } catch (FileNotFoundException e) {
+            System.out.println("JSON file not found: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error reading from JSON file: " + e.getMessage());
+        }
+    }
+
 }
