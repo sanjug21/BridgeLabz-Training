@@ -45,7 +45,8 @@ public class EmployeeWageController {
         System.out.println("7. UC7 - Compute Wage using Class Method (Refactored)");
         System.out.println("8. UC11 - Manage Multiple Companies using ArrayList");
         System.out.println("9. UC12 - Manage Multiple Companies with Advanced ArrayList");
-        System.out.print("Enter your choice (1-9): ");
+        System.out.println("10. UC13 - Store Daily Wages along with Total Wage *** LATEST ***");
+        System.out.print("Enter your choice (1-10): ");
         
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -143,8 +144,20 @@ public class EmployeeWageController {
                 employeeWageService.computeWageWithArrayList(companyWageList);
                 break;
                 
+            case 10:
+                System.out.println("Executing UC13: Store Daily Wages along with Total Wage");
+                System.out.println("=======================================================");
+                // UC13: Create ArrayList to manage multiple companies
+                List<CompanyEmpWage> companyWageListUC13 = new ArrayList<>(createMultipleCompanies());
+                
+                // UC13: Compute and store daily wages for each company
+                for (CompanyEmpWage company : companyWageListUC13) {
+                    employeeWageService.computeCompanyEmployeeWageWithDailyStorage(company);
+                }
+                break;
+                
             default:
-                System.out.println("Invalid choice! Please select a valid use case (1-9).");
+                System.out.println("Invalid choice! Please select a valid use case (1-10).");
                 break;
         }
     }

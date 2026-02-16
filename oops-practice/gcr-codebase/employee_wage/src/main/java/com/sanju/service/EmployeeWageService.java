@@ -214,6 +214,76 @@ public class EmployeeWageService {
         company.setTotalWorkingHours(totalWorkingHours);
     }
     
+    // UC13: Compute Company Employee Wage and Store Daily Wages along with Total Wage
+    public void computeCompanyEmployeeWageWithDailyStorage(CompanyEmpWage company) {
+        int totalWage = 0;
+        int totalWorkingDays = 0;
+        int totalWorkingHours = 0;
+        
+        // UC13: Clear previous daily wages
+        company.getDailyWages().clear();
+        
+        System.out.println("\n========== UC13: STORE DAILY WAGES WITH TOTAL WAGE ==========");
+        System.out.println("Computing Employee Wage for: " + company.getCompanyName());
+        System.out.println("Wage Per Hour: Rs " + company.getWagePerHour());
+        System.out.println("Max Working Days: " + company.getMaxWorkingDays());
+        System.out.println("Max Working Hours: " + company.getMaxWorkingHours());
+        System.out.println("==================================================");
+        
+        while (totalWorkingHours < company.getMaxWorkingHours() && 
+               totalWorkingDays < company.getMaxWorkingDays()) {
+            totalWorkingDays++;
+            
+            // Get employee type and hours worked
+            int empType = checkEmployeeType();
+            int hoursWorked = getHoursWorkedByType(empType);
+            int dailyWage = company.getWagePerHour() * hoursWorked;
+            
+            totalWorkingHours += hoursWorked;
+            totalWage += dailyWage;
+            
+            // UC13: Store daily wage in the company object
+            company.addDailyWage(dailyWage);
+            
+            System.out.println("Day " + totalWorkingDays + ": " + getEmployeeStatusText(empType) + 
+                             " - Hours: " + hoursWorked + ", Wage: Rs " + dailyWage);
+        }
+        
+        System.out.println("==================================================");
+        System.out.println("Total Working Days: " + totalWorkingDays);
+        System.out.println("Total Working Hours: " + totalWorkingHours);
+        System.out.println("Total Employee Wage: Rs " + totalWage);
+        
+        // Update company object with results
+        company.setTotalWage(totalWage);
+        company.setTotalWorkingDays(totalWorkingDays);
+        company.setTotalWorkingHours(totalWorkingHours);
+        
+        // UC13: Display stored daily wages
+        displayStoredDailyWages(company);
+    }
+    
+    // UC13: Helper method to display stored daily wages
+    private void displayStoredDailyWages(CompanyEmpWage company) {
+        System.out.println("\n========== DAILY WAGES STORAGE REPORT ==========");
+        System.out.println("Company: " + company.getCompanyName());
+        System.out.println("Daily Wages: " + company.getDailyWages());
+        System.out.println("Total Days Worked: " + company.getDailyWages().size());
+        
+        int total = 0;
+        for (int i = 0; i < company.getDailyWages().size(); i++) {
+            int wage = company.getDailyWages().get(i);
+            total += wage;
+            System.out.println("Day " + (i + 1) + " Wage: Rs " + wage);
+        }
+        
+        System.out.println("--------------------------------------------------");
+        System.out.println("Sum of Daily Wages: Rs " + total);
+        System.out.println("Total Wage (from computation): Rs " + company.getTotalWage());
+        System.out.println("Match: " + (total == company.getTotalWage() ? "YES ✓" : "NO ✗"));
+        System.out.println("==================================================\n");
+    }
+    
     // UC7: Helper method to get hours worked based on employee type
     private int getHoursWorkedByType(int empType) {
         switch (empType) {

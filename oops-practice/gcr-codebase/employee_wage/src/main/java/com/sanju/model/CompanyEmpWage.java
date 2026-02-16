@@ -2,6 +2,9 @@ package com.sanju.model;
 
 // UC10: CompanyEmpWage class to represent single company's wage details
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CompanyEmpWage {
     // UC10: Instance variables for company parameters
     private String companyName;
@@ -14,6 +17,9 @@ public class CompanyEmpWage {
     private int totalWorkingDays;
     private int totalWorkingHours;
     
+    // UC13: Store daily wages along with total wage
+    private List<Integer> dailyWages;
+    
     // UC10: Constructor to initialize company parameters
     public CompanyEmpWage(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) {
         this.companyName = companyName;
@@ -23,6 +29,8 @@ public class CompanyEmpWage {
         this.totalWage = 0;
         this.totalWorkingDays = 0;
         this.totalWorkingHours = 0;
+        // UC13: Initialize daily wages list
+        this.dailyWages = new ArrayList<>();
     }
     
     // Getters for company parameters
@@ -67,6 +75,20 @@ public class CompanyEmpWage {
         this.totalWorkingHours = totalWorkingHours;
     }
     
+    // UC13: Getters and Setters for daily wages
+    public List<Integer> getDailyWages() {
+        return dailyWages;
+    }
+    
+    public void setDailyWages(List<Integer> dailyWages) {
+        this.dailyWages = dailyWages;
+    }
+    
+    // UC13: Add a single daily wage to the list
+    public void addDailyWage(int wage) {
+        this.dailyWages.add(wage);
+    }
+    
     @Override
     public String toString() {
         return "CompanyEmpWage{" +
@@ -77,6 +99,7 @@ public class CompanyEmpWage {
                 ", totalWage=" + totalWage +
                 ", totalWorkingDays=" + totalWorkingDays +
                 ", totalWorkingHours=" + totalWorkingHours +
+                ", dailyWages=" + dailyWages +
                 '}';
     }
 }
