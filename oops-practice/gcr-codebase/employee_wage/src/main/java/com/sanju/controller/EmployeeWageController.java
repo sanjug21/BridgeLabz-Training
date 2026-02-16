@@ -2,10 +2,10 @@ package com.sanju.controller;
 
 import com.sanju.model.Employee;
 import com.sanju.model.CompanyEmpWage;
-import com.sanju.model.EmpWageBuilder;
-import com.sanju.model.IEmpWageBuilder;
 import com.sanju.service.EmployeeWageService;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeWageController {
     private EmployeeWageService employeeWageService;
@@ -43,11 +43,9 @@ public class EmployeeWageController {
         System.out.println("5. UC5 - Calculate Monthly Wage (20 days)");
         System.out.println("6. UC6 - Calculate Wage with Conditions (100 hours or 20 days)");
         System.out.println("7. UC7 - Compute Wage using Class Method (Refactored)");
-        System.out.println("8. UC8 - Compute Wage for Multiple Companies (Function Parameters)");
-        System.out.println("9. UC9 - Save Total Wage for Each Company (Instance Variables)");
-        System.out.println("10. UC10 - Manage Multiple Companies via EmpWageBuilder Array");
-        System.out.println("11. UC11 - Manage Multiple Companies using Interface Approach *** LATEST UPDATED ***");
-        System.out.print("Enter your choice (1-11): ");
+        System.out.println("8. UC11 - Manage Multiple Companies using ArrayList");
+        System.out.println("9. UC12 - Manage Multiple Companies with Advanced ArrayList");
+        System.out.print("Enter your choice (1-9): ");
         
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -126,153 +124,39 @@ public class EmployeeWageController {
                 break;
                 
             case 8:
-                System.out.println("Executing UC8: Compute Wage for Multiple Companies");
-                System.out.println("==================================================");
-                // UC8: Compute wage for multiple companies using function parameters
-                // Each company has different wage, working days, and working hours
+                System.out.println("Executing UC11: Manage Multiple Companies using ArrayList");
+                System.out.println("=========================================================");
+                // UC11: Create ArrayList to manage multiple companies directly
+                List<CompanyEmpWage> companyWageList1 = new ArrayList<>(createMultipleCompanies());
                 
-                System.out.println("\n--- Company 1: Tech Solutions Pvt Ltd ---");
-                employeeWageService.computeEmployeeWageWithParams(
-                    "Tech Solutions Pvt Ltd",
-                    20,   // Rs 20 per hour
-                    20,   // 20 working days
-                    100   // 100 working hours
-                );
-                
-                System.out.println("\n--- Company 2: Infosys Limited ---");
-                employeeWageService.computeEmployeeWageWithParams(
-                    "Infosys Limited",
-                    25,   // Rs 25 per hour
-                    22,   // 22 working days
-                    120   // 120 working hours
-                );
-                
-                System.out.println("\n--- Company 3: Wipro Technologies ---");
-                employeeWageService.computeEmployeeWageWithParams(
-                    "Wipro Technologies",
-                    30,   // Rs 30 per hour
-                    18,   // 18 working days
-                    90    // 90 working hours
-                );
+                // UC11: Compute and display wages using ArrayList
+                employeeWageService.computeWageWithArrayList(companyWageList1);
                 break;
                 
             case 9:
-                System.out.println("Executing UC9: Save Total Wage for Each Company");
-                System.out.println("===============================================");
-                // UC9: Create EmpWageBuilder instances with instance variables for each company
+                System.out.println("Executing UC12: Manage Multiple Companies using ArrayList");
+                System.out.println("==========================================================");
+                // UC12: Create ArrayList to manage multiple companies explicitly
+                List<CompanyEmpWage> companyWageList = new ArrayList<>(createMultipleCompanies());
                 
-                EmpWageBuilder company1 = new EmpWageBuilder(
-                    "Tech Solutions Pvt Ltd",
-                    20,   // Rs 20 per hour
-                    20,   // 20 working days
-                    100   // 100 working hours
-                );
-                
-                EmpWageBuilder company2 = new EmpWageBuilder(
-                    "Infosys Limited",
-                    25,   // Rs 25 per hour
-                    22,   // 22 working days
-                    120   // 120 working hours
-                );
-                
-                EmpWageBuilder company3 = new EmpWageBuilder(
-                    "Wipro Technologies",
-                    30,   // Rs 30 per hour
-                    18,   // 18 working days
-                    90    // 90 working hours
-                );
-                
-                // UC9: Compute and save wage for each company
-                System.out.println("\n--- Computing for Company 1 ---");
-                employeeWageService.computeAndSaveEmployeeWage(company1);
-                
-                System.out.println("\n--- Computing for Company 2 ---");
-                employeeWageService.computeAndSaveEmployeeWage(company2);
-                
-                System.out.println("\n--- Computing for Company 3 ---");
-                employeeWageService.computeAndSaveEmployeeWage(company3);
-                
-                // UC9: Display all saved company wages from repository
-                employeeWageService.getRepository().displayAllCompanyWages();
-                break;
-                
-            case 10:
-                System.out.println("Executing UC10: Manage Multiple Companies via EmpWageBuilder");
-                System.out.println("=============================================================");
-                // UC10: Create one EmpWageBuilder to manage multiple companies
-                EmpWageBuilder wageBuilder = new EmpWageBuilder();
-                
-                // UC10: Create CompanyEmpWage objects and add to builder
-                CompanyEmpWage compWage1 = new CompanyEmpWage(
-                    "Tech Solutions Pvt Ltd",
-                    20,   // Rs 20 per hour
-                    20,   // 20 working days
-                    100   // 100 working hours
-                );
-                
-                CompanyEmpWage compWage2 = new CompanyEmpWage(
-                    "Infosys Limited",
-                    25,   // Rs 25 per hour
-                    22,   // 22 working days
-                    120   // 120 working hours
-                );
-                
-                CompanyEmpWage compWage3 = new CompanyEmpWage(
-                    "Wipro Technologies",
-                    30,   // Rs 30 per hour
-                    18,   // 18 working days
-                    90    // 90 working hours
-                );
-                
-                // UC10: Add all companies to a single EmpWageBuilder
-                wageBuilder.addCompanyWage(compWage1);
-                wageBuilder.addCompanyWage(compWage2);
-                wageBuilder.addCompanyWage(compWage3);
-                
-                // UC10: Compute wages for all companies managed by builder
-                employeeWageService.computeWageForMultipleCompanies(wageBuilder);
-                break;
-                
-            case 11:
-                System.out.println("Executing UC11: Manage Multiple Companies using Interface Approach");
-                System.out.println("===================================================================");
-                // UC11: Create EmpWageBuilder implementing IEmpWageBuilder interface
-                IEmpWageBuilder empWageBuilderInterface = new EmpWageBuilder();
-                
-                // UC11: Create CompanyEmpWage objects and add via interface
-                CompanyEmpWage interfaceWage1 = new CompanyEmpWage(
-                    "Accenture India Pvt Ltd",
-                    22,   // Rs 22 per hour
-                    21,   // 21 working days
-                    110   // 110 working hours
-                );
-                
-                CompanyEmpWage interfaceWage2 = new CompanyEmpWage(
-                    "HCL Technologies",
-                    28,   // Rs 28 per hour
-                    20,   // 20 working days
-                    105   // 105 working hours
-                );
-                
-                CompanyEmpWage interfaceWage3 = new CompanyEmpWage(
-                    "Cognizant India",
-                    26,   // Rs 26 per hour
-                    19,   // 19 working days
-                    95    // 95 working hours
-                );
-                
-                // UC11: Add companies via interface methods
-                empWageBuilderInterface.addCompanyWage(interfaceWage1);
-                empWageBuilderInterface.addCompanyWage(interfaceWage2);
-                empWageBuilderInterface.addCompanyWage(interfaceWage3);
-                
-                // UC11: Compute and display wages using interface
-                employeeWageService.computeWageWithInterface(empWageBuilderInterface);
+                // UC12: Compute wages for ArrayList of companies
+                employeeWageService.computeWageWithArrayList(companyWageList);
                 break;
                 
             default:
-                System.out.println("Invalid choice! Please select a valid use case (1-11).");
+                System.out.println("Invalid choice! Please select a valid use case (1-9).");
                 break;
         }
+    }
+    
+   
+    private List<CompanyEmpWage> createMultipleCompanies() {
+        List<CompanyEmpWage> companies = new ArrayList<>();
+        
+        companies.add(new CompanyEmpWage("Accenture India Pvt Ltd", 22, 21, 110));
+        companies.add(new CompanyEmpWage("HCL Technologies", 28, 20, 105));
+        companies.add(new CompanyEmpWage("Cognizant India", 26, 19, 95));
+        
+        return companies;
     }
 }

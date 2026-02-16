@@ -2,9 +2,9 @@ package com.sanju.service;
 
 import com.sanju.model.Employee;
 import com.sanju.model.CompanyEmpWage;
-import com.sanju.model.EmpWageBuilder;
-import com.sanju.model.IEmpWageBuilder;
 import com.sanju.repository.EmployeeWageRepository;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeWageService {
     // UC9: Repository instance to save company wage builders
@@ -244,6 +244,12 @@ public class EmployeeWageService {
     
     //UC8: Compute Employee Wage using Function Parameters (not class variables)
      
+    /**
+     * UC8 (DEPRECATED): Compute employee wage using function parameters
+     * This approach has been superseded by UC11/UC12 (ArrayList approach)
+     * Kept for reference and backward compatibility
+     */
+    @Deprecated
     public int computeEmployeeWageWithParams(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) {
         int totalWage = 0;
         int totalWorkingDays = 0;
@@ -278,27 +284,31 @@ public class EmployeeWageService {
         return totalWage;
     }
     
-    //UC9: Compute and Save Employee Wage using EmpWageBuilder with Instance Variables
-    
-    public void computeAndSaveEmployeeWage(EmpWageBuilder builder) {
+    /**
+     * UC9 (DEPRECATED): Compute and Save Employee Wage using EmpWageBuilder
+     * This approach has been superseded by UC11/UC12 (ArrayList approach)
+     * Kept for reference and backward compatibility
+     */
+    @Deprecated
+    public void computeAndSaveEmployeeWage(CompanyEmpWage company) {
         int totalWage = 0;
         int totalWorkingDays = 0;
         int totalWorkingHours = 0;
         
-        System.out.println("\nComputing Employee Wage for: " + builder.getCompanyName());
-        System.out.println("Wage Per Hour: Rs " + builder.getWagePerHour());
-        System.out.println("Max Working Days: " + builder.getMaxWorkingDays());
-        System.out.println("Max Working Hours: " + builder.getMaxWorkingHours());
+        System.out.println("\nComputing Employee Wage for: " + company.getCompanyName());
+        System.out.println("Wage Per Hour: Rs " + company.getWagePerHour());
+        System.out.println("Max Working Days: " + company.getMaxWorkingDays());
+        System.out.println("Max Working Hours: " + company.getMaxWorkingHours());
         System.out.println("==================================================");
         
-        while (totalWorkingHours < builder.getMaxWorkingHours() && 
-               totalWorkingDays < builder.getMaxWorkingDays()) {
+        while (totalWorkingHours < company.getMaxWorkingHours() && 
+               totalWorkingDays < company.getMaxWorkingDays()) {
             totalWorkingDays++;
             
             // Get employee type and hours worked
             int empType = checkEmployeeType();
             int hoursWorked = getHoursWorkedByType(empType);
-            int dailyWage = builder.getWagePerHour() * hoursWorked;
+            int dailyWage = company.getWagePerHour() * hoursWorked;
             
             totalWorkingHours += hoursWorked;
             totalWage += dailyWage;
@@ -312,38 +322,19 @@ public class EmployeeWageService {
         System.out.println("Total Working Hours: " + totalWorkingHours);
         System.out.println("Total Employee Wage: Rs " + totalWage);
         
-        // UC9: Save computed values to builder instance variables
-        builder.setTotalWage(totalWage);
-        builder.setTotalWorkingDays(totalWorkingDays);
-        builder.setTotalWorkingHours(totalWorkingHours);
+        // UC9: Save computed values
+        company.setTotalWage(totalWage);
+        company.setTotalWorkingDays(totalWorkingDays);
+        company.setTotalWorkingHours(totalWorkingHours);
         
-        // UC9: Save builder to repository
-        repository.addCompanyWageBuilder(builder);
-        System.out.println("\n*** Saved wage for " + builder.getCompanyName() + " to repository ***");
+        // UC9: Save company to repository
+        repository.addCompanyWage(company);
+        System.out.println("\n*** Saved wage for " + company.getCompanyName() + " to repository ***");
     }
     
     // UC9: Get repository instance (for displaying saved wages)
     public EmployeeWageRepository getRepository() {
         return repository;
-    }
-    
-    // UC10: Compute and save Employee Wage for multiple companies using EmpWageBuilder
-     
-    public void computeWageForMultipleCompanies(EmpWageBuilder empWageBuilder) {
-        System.out.println("\nComputing wages for all companies managed by EmpWageBuilder...");
-        System.out.println("==================================================================");
-        
-        // UC10: Process each CompanyEmpWage in the builder
-        for (CompanyEmpWage company : empWageBuilder.getAllCompanyWages()) {
-            computeWageForCompany(company);
-        }
-        
-        System.out.println("==================================================================");
-        // UC10: Display summary
-        empWageBuilder.displayAllCompanyWages();
-        
-        System.out.println("Total Companies Managed: " + empWageBuilder.getTotalCompanies());
-        System.out.println("Total Wage Across All Companies: Rs " + empWageBuilder.getTotalWageAcrossAllCompanies());
     }
     
     // UC10: Helper method to compute wage for a single company
@@ -375,22 +366,75 @@ public class EmployeeWageService {
         System.out.println("  -> Total Wage: Rs " + totalWage + ", Days: " + totalWorkingDays + ", Hours: " + totalWorkingHours);
     }
     
-    // UC11: Compute and display Employee Wage using Interface approach
-    
-    public void computeWageWithInterface(IEmpWageBuilder empWageBuilder) {
-        System.out.println("\nComputing wages through IEmpWageBuilder Interface...");
+    // UC12: Compute and display Employee Wage using ArrayList approach
+     
+    public void computeWageWithArrayList(List<CompanyEmpWage> companyWageList) {
+        System.out.println("\nComputing wages through ArrayList...");
         System.out.println("==================================================================");
         
-        // UC11: Process each CompanyEmpWage using interface methods
-        for (CompanyEmpWage company : empWageBuilder.getAllCompanyWages()) {
+        if (companyWageList == null || companyWageList.isEmpty()) {
+            System.out.println("No companies in the ArrayList!");
+            return;
+        }
+        
+        // UC12: Process each CompanyEmpWage in the ArrayList
+        for (CompanyEmpWage company : companyWageList) {
             computeWageForCompany(company);
         }
         
         System.out.println("==================================================================");
-        // UC11: Display summary using interface methods
-        empWageBuilder.displayAllCompanyWages();
+        System.out.println("\n========== All Company Wages (Managed by ArrayList) ==========");
         
-        System.out.println("Total Companies Managed (via Interface): " + empWageBuilder.getTotalCompanies());
-        System.out.println("Total Wage Across All Companies (via Interface): Rs " + empWageBuilder.getTotalWageAcrossAllCompanies());
+        // UC12: Display details for each company
+        for (int i = 0; i < companyWageList.size(); i++) {
+            CompanyEmpWage company = companyWageList.get(i);
+            System.out.println("\nCompany " + (i + 1) + ": " + company.getCompanyName());
+            System.out.println("Wage Per Hour: Rs " + company.getWagePerHour());
+            System.out.println("Max Working Days: " + company.getMaxWorkingDays());
+            System.out.println("Max Working Hours: " + company.getMaxWorkingHours());
+            System.out.println("Total Wage: Rs " + company.getTotalWage());
+            System.out.println("Total Working Days: " + company.getTotalWorkingDays());
+            System.out.println("Total Working Hours: " + company.getTotalWorkingHours());
+            System.out.println("-------------------------------------------------------------------");
+        }
+        
+        System.out.println("====================================================================");
+        
+        // UC12: Calculate and display summary
+        int totalCompanies = companyWageList.size();
+        int totalWageAcrossCompanies = 0;
+        
+        for (CompanyEmpWage company : companyWageList) {
+            totalWageAcrossCompanies += company.getTotalWage();
+        }
+        
+        System.out.println("Total Companies Managed (via ArrayList): " + totalCompanies);
+        System.out.println("Total Wage Across All Companies (via ArrayList): Rs " + totalWageAcrossCompanies);
+    }
+    
+ 
+    private void displayCompanyDetails(CompanyEmpWage company, int index) {
+        if (index > 0) {
+            System.out.println("\nCompany " + index + ": " + company.getCompanyName());
+        } else {
+            System.out.println("\nCompany: " + company.getCompanyName());
+        }
+        System.out.println("Wage Per Hour: Rs " + company.getWagePerHour());
+        System.out.println("Max Working Days: " + company.getMaxWorkingDays());
+        System.out.println("Max Working Hours: " + company.getMaxWorkingHours());
+        System.out.println("Total Wage: Rs " + company.getTotalWage());
+        System.out.println("Total Working Days: " + company.getTotalWorkingDays());
+        System.out.println("Total Working Hours: " + company.getTotalWorkingHours());
+        System.out.println("-------------------------------------------------------------------");
+    }
+    
+    
+  
+    private int calculateTotalWageAcrossCompanies(List<CompanyEmpWage> companies) {
+        int totalWage = 0;
+        for (CompanyEmpWage company : companies) {
+            totalWage += company.getTotalWage();
+        }
+        return totalWage;
     }
 }

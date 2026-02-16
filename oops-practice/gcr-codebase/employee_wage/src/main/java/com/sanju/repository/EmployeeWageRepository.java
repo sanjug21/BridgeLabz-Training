@@ -1,51 +1,52 @@
 package com.sanju.repository;
 
-import com.sanju.model.EmpWageBuilder;
+import com.sanju.model.CompanyEmpWage;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * UC9: Repository to store EmpWageBuilder instances for multiple companies
+ * UC12: Repository to store CompanyEmpWage instances for multiple companies
+ * Simplified for essential models only
  */
 public class EmployeeWageRepository {
-    // UC9: Instance variable to store company wage builders
-    private List<EmpWageBuilder> companyWageBuilders;
+    // UC12: Instance variable to store company wages
+    private List<CompanyEmpWage> companyWages;
     
     public EmployeeWageRepository() {
-        this.companyWageBuilders = new ArrayList<>();
+        this.companyWages = new ArrayList<>();
     }
     
-    // UC9: Add company wage builder to repository
-    public void addCompanyWageBuilder(EmpWageBuilder builder) {
-        companyWageBuilders.add(builder);
+    // UC12: Add company wage to repository
+    public void addCompanyWage(CompanyEmpWage wage) {
+        companyWages.add(wage);
     }
     
-    // UC9: Get all company wage builders
-    public List<EmpWageBuilder> getAllCompanyWageBuilders() {
-        return companyWageBuilders;
+    // UC12: Get all company wages
+    public List<CompanyEmpWage> getAllCompanyWages() {
+        return companyWages;
     }
     
-    // UC9: Get company wage builder by name
-    public EmpWageBuilder getCompanyWageBuilder(String companyName) {
-        for (EmpWageBuilder builder : companyWageBuilders) {
-            if (builder.getCompanyName().equalsIgnoreCase(companyName)) {
-                return builder;
+    // UC12: Get company wage by name
+    public CompanyEmpWage getCompanyWage(String companyName) {
+        for (CompanyEmpWage wage : companyWages) {
+            if (wage.getCompanyName().equalsIgnoreCase(companyName)) {
+                return wage;
             }
         }
         return null;
     }
     
-    // UC9: Display all saved company wages
+    // UC12: Display all saved company wages
     public void displayAllCompanyWages() {
         System.out.println("\n========== Saved Company Wages ==========");
-        if (companyWageBuilders.isEmpty()) {
+        if (companyWages.isEmpty()) {
             System.out.println("No company wages saved yet.");
         } else {
-            for (EmpWageBuilder builder : companyWageBuilders) {
-                System.out.println("\nCompany: " + builder.getCompanyName());
-                System.out.println("Total Wage: Rs " + builder.getTotalWage());
-                System.out.println("Total Working Days: " + builder.getTotalWorkingDays());
-                System.out.println("Total Working Hours: " + builder.getTotalWorkingHours());
+            for (CompanyEmpWage wage : companyWages) {
+                System.out.println("\nCompany: " + wage.getCompanyName());
+                System.out.println("Total Wage: Rs " + wage.getTotalWage());
+                System.out.println("Total Working Days: " + wage.getTotalWorkingDays());
+                System.out.println("Total Working Hours: " + wage.getTotalWorkingHours());
                 System.out.println("----------------------------------------");
             }
         }
