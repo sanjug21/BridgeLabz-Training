@@ -33,7 +33,7 @@ public class EmployeeWageController {
         System.out.println("Wage Per Hour: Rs " + employee.getWagePerHour());
         System.out.println();
         
-        // Display menu for use case selection
+        // Display menu for all use cases
         System.out.println("Select Use Case:");
         System.out.println("1. UC1 - Check Employee Attendance");
         System.out.println("2. UC2 - Calculate Daily Employee Wage");
@@ -44,7 +44,8 @@ public class EmployeeWageController {
         System.out.println("7. UC7 - Compute Wage using Class Method (Refactored)");
         System.out.println("8. UC8 - Compute Wage for Multiple Companies (Function Parameters)");
         System.out.println("9. UC9 - Save Total Wage for Each Company (Instance Variables)");
-        System.out.print("Enter your choice (1-9): ");
+        System.out.println("10. UC10 - Manage Multiple Companies via EmpWageBuilder Array ");
+        System.out.print("Enter your choice (1-10): ");
         
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -193,8 +194,45 @@ public class EmployeeWageController {
                 employeeWageService.getRepository().displayAllCompanyWages();
                 break;
                 
+            case 10:
+                System.out.println("Executing UC10: Manage Multiple Companies via EmpWageBuilder");
+                System.out.println("=============================================================");
+                // UC10: Create one EmpWageBuilder to manage multiple companies
+                EmpWageBuilder wageBuilder = new EmpWageBuilder();
+                
+                // UC10: Create CompanyEmpWage objects and add to builder
+                CompanyEmpWage compWage1 = new CompanyEmpWage(
+                    "Tech Solutions Pvt Ltd",
+                    20,   // Rs 20 per hour
+                    20,   // 20 working days
+                    100   // 100 working hours
+                );
+                
+                CompanyEmpWage compWage2 = new CompanyEmpWage(
+                    "Infosys Limited",
+                    25,   // Rs 25 per hour
+                    22,   // 22 working days
+                    120   // 120 working hours
+                );
+                
+                CompanyEmpWage compWage3 = new CompanyEmpWage(
+                    "Wipro Technologies",
+                    30,   // Rs 30 per hour
+                    18,   // 18 working days
+                    90    // 90 working hours
+                );
+                
+                // UC10: Add all companies to a single EmpWageBuilder
+                wageBuilder.addCompanyWage(compWage1);
+                wageBuilder.addCompanyWage(compWage2);
+                wageBuilder.addCompanyWage(compWage3);
+                
+                // UC10: Compute wages for all companies managed by builder
+                employeeWageService.computeWageForMultipleCompanies(wageBuilder);
+                break;
+                
             default:
-                System.out.println("Invalid choice! Please select a valid use case (1-9).");
+                System.out.println("Invalid choice! Please select a valid use case (1-10).");
                 break;
         }
     }

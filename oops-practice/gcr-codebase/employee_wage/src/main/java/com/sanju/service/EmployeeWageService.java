@@ -325,4 +325,52 @@ public class EmployeeWageService {
     public EmployeeWageRepository getRepository() {
         return repository;
     }
+    
+    // UC10: Compute and save Employee Wage for multiple companies using EmpWageBuilder
+     
+    public void computeWageForMultipleCompanies(EmpWageBuilder empWageBuilder) {
+        System.out.println("\nComputing wages for all companies managed by EmpWageBuilder...");
+        System.out.println("==================================================================");
+        
+        // UC10: Process each CompanyEmpWage in the builder
+        for (CompanyEmpWage company : empWageBuilder.getAllCompanyWages()) {
+            computeWageForCompany(company);
+        }
+        
+        System.out.println("==================================================================");
+        // UC10: Display summary
+        empWageBuilder.displayAllCompanyWages();
+        
+        System.out.println("Total Companies Managed: " + empWageBuilder.getTotalCompanies());
+        System.out.println("Total Wage Across All Companies: Rs " + empWageBuilder.getTotalWageAcrossAllCompanies());
+    }
+    
+    // UC10: Helper method to compute wage for a single company
+    private void computeWageForCompany(CompanyEmpWage company) {
+        int totalWage = 0;
+        int totalWorkingDays = 0;
+        int totalWorkingHours = 0;
+        
+        System.out.println("\nProcessing: " + company.getCompanyName());
+        
+        while (totalWorkingHours < company.getMaxWorkingHours() && 
+               totalWorkingDays < company.getMaxWorkingDays()) {
+            totalWorkingDays++;
+            
+            // Get employee type and hours worked
+            int empType = checkEmployeeType();
+            int hoursWorked = getHoursWorkedByType(empType);
+            int dailyWage = company.getWagePerHour() * hoursWorked;
+            
+            totalWorkingHours += hoursWorked;
+            totalWage += dailyWage;
+        }
+        
+        // UC10: Save computed values to company object
+        company.setTotalWage(totalWage);
+        company.setTotalWorkingDays(totalWorkingDays);
+        company.setTotalWorkingHours(totalWorkingHours);
+        
+        System.out.println("  -> Total Wage: Rs " + totalWage + ", Days: " + totalWorkingDays + ", Hours: " + totalWorkingHours);
+    }
 }

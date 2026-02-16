@@ -1,20 +1,20 @@
 package com.sanju.model;
 
-// UC7: Model class to represent Company Employee Wage with Class Variables
+// UC10: CompanyEmpWage class to represent single company's wage details
 
 public class CompanyEmpWage {
-    // UC7: Class Variables for company parameters
-    private final String companyName;
-    private final int wagePerHour;
-    private final int maxWorkingDays;
-    private final int maxWorkingHours;
+    // UC10: Instance variables for company parameters
+    private String companyName;
+    private int wagePerHour;
+    private int maxWorkingDays;
+    private int maxWorkingHours;
     
-    // UC7: Class Variables to store computation results
+    // UC10: Instance variables to store computation results
     private int totalWage;
     private int totalWorkingDays;
     private int totalWorkingHours;
     
-    // UC7: Constructor to initialize company wage parameters
+    // UC10: Constructor to initialize company parameters
     public CompanyEmpWage(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) {
         this.companyName = companyName;
         this.wagePerHour = wagePerHour;
@@ -25,7 +25,7 @@ public class CompanyEmpWage {
         this.totalWorkingHours = 0;
     }
     
-    // Getters for class variables
+    // Getters for company parameters
     public String getCompanyName() {
         return companyName;
     }
