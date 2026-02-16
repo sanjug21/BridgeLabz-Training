@@ -23,7 +23,9 @@ public class AddressBookMain {
             System.out.println("7. Count Persons by City");
             System.out.println("8. Count Persons by State");
             System.out.println("9. Display operation (based on Name/City/State/zip)");
-            System.out.println("10. Exit");
+            System.out.println("10. Save Address Book to File");
+            System.out.println("11. Load Address Book from File");
+            System.out.println("12. Exit");
             System.out.print("Enter choice: ");
             int choice=sc.nextInt();
 
@@ -72,6 +74,20 @@ public class AddressBookMain {
                     break;
 
                 case 10:
+                    // UC 13: Ability to write address book to file
+                    System.out.print("Enter file name to save: ");
+                    String saveFileName = sc.next();
+                    addressBookService.saveToFile(saveFileName);
+                    break;
+
+                case 11:
+                    // UC 13: Ability to read address book from file
+                    System.out.print("Enter file name to load: ");
+                    String loadFileName = sc.next();
+                    addressBookService.loadFromFile(loadFileName);
+                    break;
+
+                case 12:
                     exit=true;
                     break;            
                 default:

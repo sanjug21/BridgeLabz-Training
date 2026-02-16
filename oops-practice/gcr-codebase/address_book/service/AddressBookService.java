@@ -1,6 +1,7 @@
 package service;
 
 import java.util.*;
+import java.io.*;
 
 import model.Contact;
 import repository.AddressBookRepository;
@@ -246,5 +247,26 @@ public class AddressBookService {
         return new ArrayList<>(addressBookRepository.getAddressBook().keySet());
     }
 
+    // UC 13: Ability to write address book to file
+    public void saveToFile(String fileName) {
+        try {
+            addressBookRepository.writeToFile(fileName);
+            System.out.println("Address Book saved to file successfully: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
+
+    // UC 13: Ability to read address book from file
+    public void loadFromFile(String fileName) {
+        try {
+            addressBookRepository.readFromFile(fileName);
+            System.out.println("Address Book loaded from file successfully: " + fileName);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error reading from file: " + e.getMessage());
+        }
+    }
 
 }
