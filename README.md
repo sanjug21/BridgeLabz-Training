@@ -53,7 +53,7 @@
 30. [Future Logistics](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/future_logistics)
 31. [Food Delivery Routing System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/food_delivery_routing)
 32. [Online Classroom Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/online_classroom_attendance)
-
+33. [Smart Water Tank Monitoring System](https://github.com/sanjug21/BridgeLabz-Training/tree/oops-practice/oops-practice/scenario-based/smart_water_tank_monitoring_system)
 
 # DSA Scenario Based Problems
  
