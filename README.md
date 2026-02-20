@@ -81,6 +81,13 @@
 9. [Music Playlist Manager](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/music_playlist_manager)
 10. [Smart Energy Moniter](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/smart_energy_monitor)
 11. [Online Auction System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/online_auction_system)
+12. [Smart Traffic Fine Collection System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/smart_traffic_fine_collection_system)
+13. [Railway Platform Allocation System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/railway_platform_allocation_system)
+14. [Digital Subscription Renewal System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/digital_subscription_renewal_system)
+15. [Online Hackathon Submission Evaluator](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/online_hackathon_submission_evaluator)
+16. [EV Charging Station Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/ev_charging_station_management_system)
+17. [Disaster Relief Resource Allocation System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/disaster_relief_resource_allocation_system)
+
 
 # Week 1: Getting started with Java and its fundamentals
 
