@@ -1,9 +1,9 @@
-class Vehicle {
+class EVVehicle {
     String vehicleNumber;
     String ownerName;
     String vehicleType;
 
-    public Vehicle(String vehicleNumber, String ownerName, String vehicleType) {
+    public EVVehicle(String vehicleNumber, String ownerName, String vehicleType) {
         this.vehicleNumber = vehicleNumber;
         this.ownerName = ownerName;
         this.vehicleType = vehicleType;

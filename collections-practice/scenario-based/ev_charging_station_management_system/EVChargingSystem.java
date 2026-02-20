@@ -79,16 +79,16 @@ public class EVChargingSystem {
         manager.addChargingSlot(3);
 
         try {
-            Vehicle v1 = new Vehicle("KA01AB1234", "Rahul", "Tesla Model 3");
+            EVVehicle v1 = new EVVehicle("KA01AB1234", "Rahul", "Tesla Model 3");
             manager.allocateSlot(v1);
             manager.updateUnitsConsumed(1, 25.5);
 
-            Vehicle v2 = new Vehicle("MH12CD5678", "Priya", "Tata Nexon EV");
+            EVVehicle v2 = new EVVehicle("MH12CD5678", "Priya", "Tata Nexon EV");
             manager.allocateSlot(v2);
             manager.updateUnitsConsumed(2, 18.0);
 
-            manager.addToWaitingQueue(new Vehicle("DL03EF9012", "Amit", "MG ZS EV"));
-            manager.addToWaitingQueue(new Vehicle("TN09GH3456", "Sneha", "Hyundai Kona"));
+            manager.addToWaitingQueue(new EVVehicle("DL03EF9012", "Amit", "MG ZS EV"));
+            manager.addToWaitingQueue(new EVVehicle("TN09GH3456", "Sneha", "Hyundai Kona"));
 
             System.out.println("\nDemo data initialized successfully!");
 
@@ -114,7 +114,7 @@ public class EVChargingSystem {
         System.out.print("Enter Vehicle Type: ");
         String vehicleType = sc.nextLine();
 
-        Vehicle vehicle = new Vehicle(vehicleNumber, ownerName, vehicleType);
+        EVVehicle vehicle = new EVVehicle(vehicleNumber, ownerName, vehicleType);
         manager.addToWaitingQueue(vehicle);
     }
 
@@ -129,7 +129,7 @@ public class EVChargingSystem {
         System.out.print("Enter Vehicle Type: ");
         String vehicleType = sc.nextLine();
 
-        Vehicle vehicle = new Vehicle(vehicleNumber, ownerName, vehicleType);
+        EVVehicle vehicle = new EVVehicle(vehicleNumber, ownerName, vehicleType);
         manager.allocateSlot(vehicle);
     }
 

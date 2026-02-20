@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class ChargingStationManager {
     private Map<Integer, ChargingSlot> chargingSlots;
-    private Queue<Vehicle> waitingVehicles;
+    private Queue<EVVehicle> waitingVehicles;
 
     public ChargingStationManager() {
         this.chargingSlots = new HashMap<>();
@@ -17,12 +17,12 @@ public class ChargingStationManager {
         System.out.println("Charging slot " + slotId + " added");
     }
 
-    public void addToWaitingQueue(Vehicle vehicle) {
+    public void addToWaitingQueue(EVVehicle vehicle) {
         waitingVehicles.offer(vehicle);
         System.out.println("Vehicle " + vehicle.vehicleNumber + " added to waiting queue");
     }
 
-    public void allocateSlot(Vehicle vehicle) throws NoChargingSlotAvailableException {
+    public void allocateSlot(EVVehicle vehicle) throws NoChargingSlotAvailableException {
         int availableSlot = findAvailableSlot();
         if (availableSlot == -1) {
             throw new NoChargingSlotAvailableException(
@@ -41,7 +41,7 @@ public class ChargingStationManager {
             return;
         }
 
-        Vehicle vehicle = waitingVehicles.poll();
+        EVVehicle vehicle = waitingVehicles.poll();
         allocateSlot(vehicle);
     }
 
@@ -111,7 +111,7 @@ public class ChargingStationManager {
         }
 
         int count = 1;
-        for (Vehicle vehicle : waitingVehicles) {
+        for (EVVehicle vehicle : waitingVehicles) {
             System.out.println(count + ". " + vehicle);
             count++;
         }

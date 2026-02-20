@@ -1,7 +1,7 @@
 class ChargingSlot {
     int slotId;
     boolean isOccupied;
-    Vehicle currentVehicle;
+    EVVehicle currentVehicle;
     double unitsConsumed;
 
     public ChargingSlot(int slotId) {
@@ -11,7 +11,7 @@ class ChargingSlot {
         this.unitsConsumed = 0;
     }
 
-    public void allocateVehicle(Vehicle vehicle) {
+    public void allocateVehicle(EVVehicle vehicle) {
         this.isOccupied = true;
         this.currentVehicle = vehicle;
         this.unitsConsumed = 0;
