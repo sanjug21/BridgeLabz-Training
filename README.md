@@ -87,6 +87,10 @@
 15. [Online Hackathon Submission Evaluator](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/online_hackathon_submission_evaluator)
 16. [EV Charging Station Management System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/ev_charging_station_management_system)
 17. [Disaster Relief Resource Allocation System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/disaster_relief_resource_allocation_system)
+18. [Job Portal Resume Shortlisting System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/job_portal_resume_shortlisting_system)
+19. [Event Feedback Rating Analyzer](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/event_feedback_rating_analyzer)
+20. [Smart Parking Slot Allocation System](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/smart_parking_slot_allocation_system)
+21. [Courier Staff Shift Scheduler](https://github.com/sanjug21/BridgeLabz-Training/tree/collections-practice/collections-practice/scenario-based/courier_staff_shift_scheduler)
 
 
 # Week 1: Getting started with Java and its fundamentals
