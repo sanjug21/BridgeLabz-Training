@@ -201,6 +201,12 @@
 - *17th Feb 2026 (Tuesday)*: Solved Use case 1 and Use case 2 of Quality Measurement App.
 - *18th Feb 2026 (Wednesday)*: Had a mock test related to m1 exam covering topics from java basics to dsa.
 - *19th Feb 2026 (Thursday)*: Solved Use case 3 and Use case 4 of Quality Measurement App and a meeting with mentor related to mock test.
+- *20th Feb 2026 (Friday)*: Solved Use case 5 and Use case 6 of Quality Measurement App and had a long session of soft skills training.
+- *21st Feb 2026 (Saturday)*: Solved Use case 7 and Use case 8 of Quality Measurement App and had a meeting with mentor related to use cases.
+
+# Week 11: Quality Measurement App - Use Cases and Best Practices
+- *23rd Feb 2026 (Monday)*: Solved Use case 9 and Use case 10 of Quality Measurement App and had a meeting with mentor related to use cases.
+
 
 
 
