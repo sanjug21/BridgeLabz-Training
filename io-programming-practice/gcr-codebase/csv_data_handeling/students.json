@@ -1,0 +1,32 @@
+[
+  {
+    "id": "001",
+    "name": "Priya Sharma",
+    "age": 20,
+    "marks": 85
+  },
+  {
+    "id": "002",
+    "name": "Rahul Verma",
+    "age": 21,
+    "marks": 78
+  },
+  {
+    "id": "003",
+    "name": "Ananya Reddy",
+    "age": 20,
+    "marks": 92
+  },
+  {
+    "id": "004",
+    "name": "Arjun Patel",
+    "age": 22,
+    "marks": 88
+  },
+  {
+    "id": "005",
+    "name": "Sneha Iyer",
+    "age": 21,
+    "marks": 95
+  }
+]
