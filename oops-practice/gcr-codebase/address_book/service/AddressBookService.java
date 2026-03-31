@@ -1,0 +1,522 @@
+package service;
+
+import java.util.*;
+import java.io.*;
+import java.util.concurrent.*;
+
+import model.Contact;
+import repository.AddressBookRepository;
+import persistence.*;
+
+public class AddressBookService {
+    AddressBookRepository addressBookRepository;
+    // UC 17: ExecutorService for non-blocking IO operations
+    private ExecutorService ioExecutor;
+    // UC 18: Persistence implementations following Open/Close Principle
+    private IDataPersistence filePersistence;
+    private IDataPersistence csvPersistence;
+    private IDataPersistence jsonPersistence;
+    private IDataPersistence databasePersistence;
+    
+    public AddressBookService() {
+        addressBookRepository = new AddressBookRepository();
+        addressBookRepository.addNewBook("Default");
+        // Initialize thread pool for async IO operations
+        ioExecutor = Executors.newFixedThreadPool(3);
+        // UC 18: Initialize persistence implementations
+        filePersistence = new FilePersistence();
+        csvPersistence = new CSVPersistence();
+        jsonPersistence = new JSONPersistence();
+        databasePersistence = new DatabasePersistence();
+    }
+    // UC 1: Ability to create a new address book contact
+    // UC 2: Add contact to address book
+    // UC 5: Ability to create multiple contact
+
+    public void addContactToBook(String bookName, Contact contact) {
+        try {
+            // UC 7: Ability to ensure unique contacts in a particular address book
+            if (addressBookRepository.getAddressBook().get(bookName).contains(contact)) {
+                throw new Exception("Contact Already Exists");
+            }
+            addressBookRepository.addContact(bookName, contact);
+            System.out.println("Contact Added Successfully");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+        
+       
+    }
+    // UC 3: Ability to edit contact from address book
+    public void editContact(String bookName,Contact updatedContact){
+        try {
+            for (Contact contact : addressBookRepository.getAddressBook().get(bookName)) {
+                if (contact.equals(updatedContact)) {
+                    addressBookRepository.editContact(bookName, contact, updatedContact);
+                    System.out.println("Contact Updated Successfully");
+                    return;
+                }
+            }
+            throw new Exception("Contact Not Found");
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+           
+        
+    }
+
+    // UC 4: Ability to delete contact from address book
+    public void deleteContact(String bookName,String firstName){
+        try {
+            for(Contact contact:addressBookRepository.getAddressBook().get(bookName)){
+                if(contact.getFirstName().equalsIgnoreCase(firstName)){
+                    addressBookRepository.deleteContact(bookName, contact);
+                    System.out.println("Contact Deleted Successfully");
+                    return;
+                }
+            }
+            throw new Exception("Contact Not Found");
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // UC 6: Ability to create multiple unique address books
+    public void addNewBook(String bookName) {
+        try {
+            for(String name:getAddressBookNames()){
+                if(name.equalsIgnoreCase(bookName)){
+                    throw new Exception("Book Already Exists");
+                }
+            
+            }
+            addressBookRepository.addNewBook(bookName);
+            System.out.println("Book Added Successfully");
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // UC 8: Ability to get contant in a particular city
+    public List<Contact> getContactsByCity(String city) {
+        List<Contact> contactsList = new ArrayList<>();
+        for (List<Contact> contactList : addressBookRepository.getAddressBook().values()) {
+            for(Contact contact:contactList){
+                if(contact.getCity().equalsIgnoreCase(city)){
+                    contactsList.add(contact);
+                }
+            }
+        }
+        return contactsList;
+
+    }
+    // UC 8: Ability to get contant in a particular state
+    public List<Contact> getContactsByState(String state) {
+        List<Contact> contactsList = new ArrayList<>();
+        for(List<Contact> contactList:addressBookRepository.getAddressBook().values()){
+            for(Contact contact:contactList){
+                if(contact.getState().equalsIgnoreCase(state)){
+                    contactsList.add(contact);
+                }
+            }
+        }
+        return contactsList;
+    }
+    // UC 9: Ability to view contacts by city 
+    public Map<String, List<Contact>> viewContactsByCity() {
+        Map<String, List<Contact>> contactsMap = new HashMap<>();
+        for (Map.Entry<String, List<Contact>> entry : addressBookRepository.getAddressBook().entrySet()) {
+           for(Contact contact:entry.getValue()){
+            String city=contact.getCity();
+            if(!contactsMap.containsKey(city)){
+                contactsMap.put(city,new ArrayList<>());
+            }
+            contactsMap.get(city).add(contact);
+           }
+
+
+        }
+        return contactsMap;
+
+    }
+    // UC 9: Ability to view contacts by state
+    public Map<String, List<Contact>> viewContactsByState() {
+        Map<String, List<Contact>> contactsMap = new HashMap<>();
+        for(Map.Entry<String, List<Contact>> entry:addressBookRepository.getAddressBook().entrySet()){
+            for(Contact contact:entry.getValue()){
+                String state=contact.getState();
+                if(!contactsMap.containsKey(state)){
+                    contactsMap.put(state,new ArrayList<>());
+                }
+                contactsMap.get(state).add(contact);
+            }
+                
+        }
+        return contactsMap;
+    }
+    // UC 10: Ability to count contacts by city
+    public long countContactsByCity(String city) {
+        long count = 0;
+        for(Map.Entry<String, List<Contact>> entry:addressBookRepository.getAddressBook().entrySet()){
+            for(Contact contact:entry.getValue()){
+                if(contact.getCity().equalsIgnoreCase(city)){
+                    count++;
+                }
+            }
+        }
+        return count;
+
+    }
+    // UC 10: Ability to count contacts by state
+    public long countContactsByState(String state) {
+        long count = 0;
+        for(Map.Entry<String, List<Contact>> entry:addressBookRepository.getAddressBook().entrySet()){
+            for(Contact contact:entry.getValue()){
+                if(contact.getState().equalsIgnoreCase(state)){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    // UC 11: Ability to sort the contacts in each address book by first name
+    public void sortContactsByFirstName(boolean ascendingOrder) {
+        Map<String, List<Contact>> addressBook = addressBookRepository.getAddressBook();
+        for (Map.Entry<String, List<Contact>> entry : addressBook.entrySet()) {
+            List<Contact> contacts = entry.getValue();
+            Collections.sort(contacts, new Comparator<Contact>() {
+                @Override
+                public int compare(Contact contact1, Contact contact2) {
+                    if (ascendingOrder) {
+                        return contact1.getFirstName().compareTo(contact2.getFirstName());
+                    } else {
+                        return contact2.getFirstName().compareTo(contact1.getFirstName());
+                    }
+                }
+            });
+        }
+    }
+
+
+    // UC 12: Ability to sort the contacts in each address book by city
+    public void sortContactsByCity(boolean ascendingOrder) {
+        Map<String,List<Contact>> addressBook=addressBookRepository.getAddressBook();
+        for(Map.Entry<String, List<Contact>> entry:addressBook.entrySet()){
+            List<Contact> contacts=entry.getValue();
+            Collections.sort(contacts, new Comparator<Contact>() {
+                @Override
+                public int compare(Contact contact1, Contact contact2) {
+                    if (ascendingOrder) {
+                        return contact1.getCity().compareTo(contact2.getCity());
+                    } else {
+                        return contact2.getCity().compareTo(contact1.getCity());
+                    }
+                }
+            });
+        }
+        
+    }
+    // UC 12: Ability to sort the contacts in each address book by state
+    public void sortContactsByState(boolean ascendingOrder) {
+        Map<String, List<Contact>> addressBook = addressBookRepository.getAddressBook();
+        for (Map.Entry<String, List<Contact>> entry : addressBook.entrySet()) {
+            List<Contact> contacts = entry.getValue();
+            Collections.sort(contacts, new Comparator<Contact>() {
+                @Override
+                public int compare(Contact contact1, Contact contact2) {
+                    if (ascendingOrder) {
+                      return contact1.getState().compareTo(contact2.getState());
+                    } else {
+                        return contact2.getState().compareTo(contact1.getState());
+
+                    }
+                }
+            });
+        }
+    }
+    // UC 12: Ability to sort the contacts in each address book by zip
+    public void sortContactsByZip(boolean ascendingOrder) {
+        Map<String, List<Contact>> addressBook = addressBookRepository.getAddressBook();
+        for (Map.Entry<String, List<Contact>> entry : addressBook.entrySet()) {
+            List<Contact> contacts = entry.getValue();
+            Collections.sort(contacts, new Comparator<Contact>() {
+                @Override
+                public int compare(Contact contact1, Contact contact2) {
+                    if (ascendingOrder) {
+                        return contact1.getZip().compareTo(contact2.getZip());
+                    } else {
+                        return contact2.getZip().compareTo(contact1.getZip());
+                    }
+                }
+            });
+        }
+    }
+
+    public Map<String, List<Contact>> getAllContacts(){
+        return addressBookRepository.getAddressBook();
+    }
+
+    public List<String> getAddressBookNames(){
+        return new ArrayList<>(addressBookRepository.getAddressBook().keySet());
+    }
+
+    // UC 13: Ability to write address book to file
+    public void saveToFile(String fileName) {
+        try {
+            addressBookRepository.writeToFile(fileName);
+            System.out.println("Address Book saved to file successfully: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
+
+    // UC 13: Ability to read address book from file
+    public void loadFromFile(String fileName) {
+        try {
+            addressBookRepository.readFromFile(fileName);
+            System.out.println("Address Book loaded from file successfully: " + fileName);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error reading from file: " + e.getMessage());
+        }
+    }
+
+    // UC 14: Ability to write address book to CSV file
+    public void saveToCSV(String fileName) {
+        try {
+            addressBookRepository.writeToCSV(fileName);
+            if (!fileName.toLowerCase().endsWith(".csv")) {
+                fileName += ".csv";
+            }
+            System.out.println("Address Book saved to CSV file successfully: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error writing to CSV file: " + e.getMessage());
+        }
+    }
+
+    // UC 14: Ability to read address book from CSV file
+    public void loadFromCSV(String fileName) {
+        try {
+            addressBookRepository.readFromCSV(fileName);
+            if (!fileName.toLowerCase().endsWith(".csv")) {
+                fileName += ".csv";
+            }
+            System.out.println("Address Book loaded from CSV file successfully: " + fileName);
+        } catch (FileNotFoundException e) {
+            System.out.println("CSV file not found: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error reading from CSV file: " + e.getMessage());
+        }
+    }
+
+    // UC 15: Ability to write address book to JSON file
+    public void saveToJSON(String fileName) {
+        try {
+            addressBookRepository.writeToJSON(fileName);
+            if (!fileName.toLowerCase().endsWith(".json")) {
+                fileName += ".json";
+            }
+            System.out.println("Address Book saved to JSON file successfully: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error writing to JSON file: " + e.getMessage());
+        }
+    }
+
+    // UC 15: Ability to read address book from JSON file
+    public void loadFromJSON(String fileName) {
+        try {
+            addressBookRepository.readFromJSON(fileName);
+            if (!fileName.toLowerCase().endsWith(".json")) {
+                fileName += ".json";
+            }
+            System.out.println("Address Book loaded from JSON file successfully: " + fileName);
+        } catch (FileNotFoundException e) {
+            System.out.println("JSON file not found: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error reading from JSON file: " + e.getMessage());
+        }
+    }
+
+    // UC 18: Ability to save address book to database
+    public void saveToDatabase(String databaseName) {
+        try {
+            databasePersistence.save(addressBookRepository.getAddressBook(), databaseName);
+            if (!databaseName.toLowerCase().endsWith(".db")) {
+                databaseName += ".db";
+            }
+            System.out.println("Address Book saved to database successfully: " + databaseName);
+        } catch (IOException e) {
+            System.out.println("Error writing to database: " + e.getMessage());
+        }
+    }
+
+    // UC 18: Ability to load address book from database
+    public void loadFromDatabase(String databaseName) {
+        try {
+            Map<String, List<Contact>> loadedData = databasePersistence.load(databaseName);
+            // Replace current address book data with loaded data
+            addressBookRepository.getAddressBook().clear();
+            addressBookRepository.getAddressBook().putAll(loadedData);
+            
+            if (!databaseName.toLowerCase().endsWith(".db")) {
+                databaseName += ".db";
+            }
+            System.out.println("Address Book loaded from database successfully: " + databaseName);
+        } catch (FileNotFoundException e) {
+            System.out.println("Database file not found: " + databaseName);
+        } catch (IOException e) {
+            System.out.println("Error reading from database: " + e.getMessage());
+        }
+    }
+
+    // UC 17: Async version - Save to file (non-blocking)
+    public CompletableFuture<Void> saveToFileAsync(String fileName) {
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting file save operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.writeToFile(fileName);
+                System.out.println("[Async] Address Book saved to file successfully: " + fileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error writing to file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Load from file (non-blocking)
+    public CompletableFuture<Void> loadFromFileAsync(String fileName) {
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting file load operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.readFromFile(fileName);
+                System.out.println("[Async] Address Book loaded from file successfully: " + fileName);
+            } catch (FileNotFoundException e) {
+                System.out.println("[Async] File not found: " + fileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error reading from file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Save to CSV (non-blocking)
+    public CompletableFuture<Void> saveToCSVAsync(String fileName) {
+        final String finalFileName = fileName.toLowerCase().endsWith(".csv") ? fileName : fileName + ".csv";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting CSV save operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.writeToCSV(finalFileName);
+                System.out.println("[Async] Address Book saved to CSV file successfully: " + finalFileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error writing to CSV file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Load from CSV (non-blocking)
+    public CompletableFuture<Void> loadFromCSVAsync(String fileName) {
+        final String finalFileName = fileName.toLowerCase().endsWith(".csv") ? fileName : fileName + ".csv";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting CSV load operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.readFromCSV(finalFileName);
+                System.out.println("[Async] Address Book loaded from CSV file successfully: " + finalFileName);
+            } catch (FileNotFoundException e) {
+                System.out.println("[Async] CSV file not found: " + finalFileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error reading from CSV file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Save to JSON (non-blocking)
+    public CompletableFuture<Void> saveToJSONAsync(String fileName) {
+        final String finalFileName = fileName.toLowerCase().endsWith(".json") ? fileName : fileName + ".json";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting JSON save operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.writeToJSON(finalFileName);
+                System.out.println("[Async] Address Book saved to JSON file successfully: " + finalFileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error writing to JSON file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Async version - Load from JSON (non-blocking)
+    public CompletableFuture<Void> loadFromJSONAsync(String fileName) {
+        final String finalFileName = fileName.toLowerCase().endsWith(".json") ? fileName : fileName + ".json";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting JSON load operation on thread: " + Thread.currentThread().getName());
+                addressBookRepository.readFromJSON(finalFileName);
+                System.out.println("[Async] Address Book loaded from JSON file successfully: " + finalFileName);
+            } catch (FileNotFoundException e) {
+                System.out.println("[Async] JSON file not found: " + finalFileName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error reading from JSON file: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 18: Async version - Save to Database (non-blocking)
+    public CompletableFuture<Void> saveToDatabaseAsync(String databaseName) {
+        final String finalDbName = databaseName.toLowerCase().endsWith(".db") ? databaseName : databaseName + ".db";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting Database save operation on thread: " + Thread.currentThread().getName());
+                databasePersistence.save(addressBookRepository.getAddressBook(), finalDbName);
+                System.out.println("[Async] Address Book saved to database successfully: " + finalDbName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error writing to database: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 18: Async version - Load from Database (non-blocking)
+    public CompletableFuture<Void> loadFromDatabaseAsync(String databaseName) {
+        final String finalDbName = databaseName.toLowerCase().endsWith(".db") ? databaseName : databaseName + ".db";
+        return CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("[Async] Starting Database load operation on thread: " + Thread.currentThread().getName());
+                Map<String, List<Contact>> loadedData = databasePersistence.load(finalDbName);
+                addressBookRepository.getAddressBook().clear();
+                addressBookRepository.getAddressBook().putAll(loadedData);
+                System.out.println("[Async] Address Book loaded from database successfully: " + finalDbName);
+            } catch (FileNotFoundException e) {
+                System.out.println("[Async] Database file not found: " + finalDbName);
+            } catch (IOException e) {
+                System.out.println("[Async] Error reading from database: " + e.getMessage());
+            }
+        }, ioExecutor);
+    }
+
+    // UC 17: Wait for all pending async operations to complete
+    public void waitForPendingOperations() {
+        System.out.println("[Async] Waiting for all pending IO operations to complete...");
+        try {
+            Thread.sleep(500); // Give a moment for operations to complete
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    // UC 17: Shutdown executor service gracefully
+    public void shutdown() {
+        System.out.println("[Async] Shutting down IO executor service...");
+        ioExecutor.shutdown();
+        try {
+            if (!ioExecutor.awaitTermination(5, TimeUnit.SECONDS)) {
+                ioExecutor.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            ioExecutor.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("[Async] IO executor service shut down successfully.");
+    }
+
+}
