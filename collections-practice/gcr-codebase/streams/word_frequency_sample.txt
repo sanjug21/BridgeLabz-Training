@@ -1,0 +1,4 @@
+Java streams are powerful and efficient.
+Streams help process data. Streams are flexible.
+Data processing with streams is clean and readable.
+Streams streams streams; data data words words.
